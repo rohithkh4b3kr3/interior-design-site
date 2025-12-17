@@ -46,11 +46,11 @@ export default function ImageCard() {
               <rect x="218" y="305" width="4" height="30" fill="#7a9570" opacity="0.6" />
               
               {/* Wall Art Frames */}
-              <rect x="50" y="50" width="60" height="80" rx="4" fill="white" opacity="0.6" stroke="#8ca77c" strokeWidth="2" opacity="0.3" />
-              <rect x="190" y="50" width="60" height="80" rx="4" fill="white" opacity="0.6" stroke="#8ca77c" strokeWidth="2" opacity="0.3" />
+              <rect x="50" y="50" width="60" height="80" rx="4" fill="white" opacity="0.3" stroke="#8ca77c" strokeWidth="2" />
+              <rect x="190" y="50" width="60" height="80" rx="4" fill="white" opacity="0.3" stroke="#8ca77c" strokeWidth="2" />
               
               {/* Window */}
-              <rect x="100" y="30" width="100" height="150" rx="4" fill="#d4e5c8" opacity="0.4" stroke="#8ca77c" strokeWidth="2" opacity="0.2" />
+              <rect x="100" y="30" width="100" height="150" rx="4" fill="#d4e5c8" opacity="0.2" stroke="#8ca77c" strokeWidth="2" />
             </svg>
           </div>
         </div>
