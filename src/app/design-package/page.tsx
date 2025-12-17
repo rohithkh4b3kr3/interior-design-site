@@ -1,0 +1,302 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+
+const designPackages = [
+  {
+    id: 1,
+    name: "Basic Design Package",
+    price: "25000",
+    description: "Perfect for small homes and apartments",
+    features: [
+      "2D Layout Plans for All Floors",
+      "3D Elevation Design",
+      "Basic Material Suggestions",
+      "2 Revision Rounds",
+      "PDF Deliverables",
+    ],
+    deliverables: [
+      "Site Plan",
+      "Floor Plans (2D)",
+      "Front Elevation (3D)",
+      "Basic Electrical Layout",
+      "Basic Plumbing Layout",
+    ],
+    timeline: "15-20 Days",
+  },
+  {
+    id: 2,
+    name: "Standard Design Package",
+    price: "50000",
+    description: "Comprehensive design for residential projects",
+    badge: "Most Popular",
+    features: [
+      "Complete 2D & 3D Drawings",
+      "3D Interior Visualizations",
+      "Detailed Material Specifications",
+      "Structural Drawings",
+      "Electrical & Plumbing Drawings",
+      "Working Drawings",
+      "5 Revision Rounds",
+      "Material Selection Support",
+    ],
+    deliverables: [
+      "Site Plan",
+      "Floor Plans (2D & 3D)",
+      "All Elevations (3D)",
+      "3D Interior Views",
+      "Structural Drawings",
+      "Detailed Electrical Layout",
+      "Detailed Plumbing Layout",
+      "Working Drawings",
+      "Material Schedule",
+      "Bill of Quantities",
+    ],
+    timeline: "30-40 Days",
+  },
+  {
+    id: 3,
+    name: "Premium Design Package",
+    price: "100000",
+    description: "Complete design solution with premium support",
+    badge: "Best Value",
+    features: [
+      "Complete Architectural Design Set",
+      "Photorealistic 3D Renderings",
+      "Walkthrough Animation",
+      "Detailed Material Specifications",
+      "Complete Structural Design",
+      "MEP Drawings",
+      "Interior Design Consultation",
+      "Unlimited Revisions",
+      "Site Visits",
+      "Construction Support",
+      "Premium Material Library Access",
+    ],
+    deliverables: [
+      "All Standard Package Deliverables",
+      "Photorealistic 3D Renderings (10+ views)",
+      "Walkthrough Animation Video",
+      "MEP Drawings (Mechanical, Electrical, Plumbing)",
+      "Landscape Design",
+      "Interior Design Proposals",
+      "Material Sample Coordination",
+      "Ongoing Design Support",
+    ],
+    timeline: "45-60 Days",
+  },
+];
+
+export default function DesignPackagePage() {
+  return (
+    <main className="min-h-screen pt-32 pb-24 bg-[#efefec]">
+      {/* Hero Section */}
+      <section className="mx-auto max-w-7xl px-6 mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center max-w-3xl mx-auto"
+        >
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="inline-block px-4 py-2 rounded-full bg-[#8ca77c]/10 text-[#8ca77c] text-sm font-medium mb-4"
+          >
+            Architectural Design Services
+          </motion.span>
+          <h1 className="font-[var(--font-inter-tight)] text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+            Design{" "}
+            <span className="text-[#8ca77c]">Packages</span>
+          </h1>
+          <p className="text-lg text-gray-600 leading-relaxed mb-8">
+            Professional architectural design services tailored to your needs.
+            From basic layouts to complete design solutions with 3D visualizations.
+          </p>
+          <div className="bg-[#8ca77c]/10 rounded-2xl p-6 text-left max-w-2xl mx-auto">
+            <p className="text-sm text-gray-700 mb-2">
+              <strong>Special Offer:</strong> Design package is{" "}
+              <span className="text-[#8ca77c] font-semibold">FREE</span> when you
+              choose our construction services!
+            </p>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Packages Grid */}
+      <section className="mx-auto max-w-7xl px-6 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {designPackages.map((pkg, index) => (
+            <motion.div
+              key={pkg.id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className={`relative rounded-3xl bg-white p-8 shadow-sm hover:shadow-xl transition-all duration-300 ${
+                pkg.badge === "Most Popular" ? "ring-2 ring-[#8ca77c]" : ""
+              }`}
+            >
+              {pkg.badge && (
+                <div className="absolute -top-4 right-8">
+                  <span className="px-4 py-1.5 rounded-full bg-[#8ca77c] text-white text-xs font-medium shadow-lg">
+                    {pkg.badge}
+                  </span>
+                </div>
+              )}
+
+              <div className="mb-8">
+                <h3 className="font-[var(--font-inter-tight)] text-2xl font-bold mb-2">
+                  {pkg.name}
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">{pkg.description}</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-bold">₹{pkg.price}</span>
+                  <span className="text-gray-500">one-time</span>
+                </div>
+                <div className="mt-2 text-sm text-gray-500">
+                  Timeline: {pkg.timeline}
+                </div>
+              </div>
+
+              <div className="space-y-6 mb-8">
+                <div>
+                  <h4 className="font-semibold text-sm text-gray-800 mb-3">
+                    Features
+                  </h4>
+                  <ul className="space-y-2">
+                    {pkg.features.map((feature, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-sm text-gray-600"
+                      >
+                        <svg
+                          className="w-4 h-4 text-[#8ca77c] mt-0.5 flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-sm text-gray-800 mb-3">
+                    Deliverables
+                  </h4>
+                  <ul className="space-y-2">
+                    {pkg.deliverables.slice(0, 5).map((item, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-sm text-gray-600"
+                      >
+                        <svg
+                          className="w-4 h-4 text-[#8ca77c] mt-0.5 flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                          />
+                        </svg>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                    {pkg.deliverables.length > 5 && (
+                      <li className="text-xs text-gray-500 mt-2">
+                        +{pkg.deliverables.length - 5} more deliverables
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full rounded-full bg-black text-white py-4 font-medium hover:bg-gray-800 transition-colors duration-200 mb-4"
+              >
+                Get This Package
+              </motion.button>
+
+              <Link
+                href="/contact-us"
+                className="block text-center text-sm text-[#8ca77c] hover:text-[#7a9570] transition-colors"
+              >
+                Schedule Consultation →
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="mx-auto max-w-7xl px-6 mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-3xl p-10 shadow-sm"
+        >
+          <h2 className="font-[var(--font-inter-tight)] text-3xl font-bold mb-8 text-center">
+            Our Design Process
+          </h2>
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Consultation",
+                description: "Understand your requirements, site visit, and initial discussions",
+              },
+              {
+                step: "02",
+                title: "Concept Design",
+                description: "Create initial layouts and 3D concepts for your approval",
+              },
+              {
+                step: "03",
+                title: "Development",
+                description: "Develop detailed drawings and technical specifications",
+              },
+              {
+                step: "04",
+                title: "Delivery",
+                description: "Final deliverables and ongoing support during construction",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="w-16 h-16 rounded-full bg-[#8ca77c]/10 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-[#8ca77c]">{item.step}</span>
+                </div>
+                <h3 className="font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+    </main>
+  );
+}
