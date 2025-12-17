@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useMemo } from "react";
 
 // All client logos from Clientpng folder - includes all formats (png, jpg, webp, gif)
 const clients = [
@@ -35,12 +36,14 @@ const clients = [
   { id: 34, name: "Client 34", logo: "/images/Clientpng/34.webp" },
 ];
 
-// Duplicate clients for seamless infinite scroll
-const duplicatedClients = [...clients, ...clients];
-
 export default function OurClients() {
+  // Memoize duplicated clients and calculate scroll distance
+  const duplicatedClients = useMemo(() => [...clients, ...clients], []);
+  const itemWidth = 192; // w-48 (12rem = 192px) + gap-8 (2rem = 32px) = 224px per item
+  const scrollDistance = useMemo(() => -(clients.length * itemWidth), [itemWidth]);
+
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 bg-white overflow-hidden">
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 py-16 md:py-24 bg-white overflow-hidden">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -58,54 +61,55 @@ export default function OurClients() {
         >
           Trusted By
         </motion.span>
-        <h2 className="font-[var(--font-inter-tight)] text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+        <h2 className="font-[var(--font-inter-tight)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
           Our{" "}
           <span className="text-[#8ca77c]">Clients</span>
         </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
           We&apos;re proud to have worked with leading brands and homeowners
           across the country, delivering exceptional results.
         </p>
       </motion.div>
 
       {/* Scrolling Logos - Left to Right */}
-      <div className="relative mb-16">
+      <div className="relative mb-12 md:mb-16">
         {/* Gradient overlays for fade effect */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
         {/* Scrolling container */}
         <div className="overflow-hidden">
           <motion.div
-            className="flex gap-8"
+            className="flex gap-6 md:gap-8"
             animate={{
-              x: [0, -50 * 100], // Move by 50% (half the width of duplicated items)
+              x: [0, scrollDistance],
             }}
             transition={{
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 50,
+                duration: 60,
                 ease: "linear",
               },
             }}
           >
             {duplicatedClients.map((client, index) => (
-              <motion.div
+              <div
                 key={`${client.id}-${index}`}
-                className="flex-shrink-0 w-48 h-32 flex items-center justify-center p-6 rounded-2xl bg-gray-50 hover:bg-gray-100 transition-colors duration-300 group"
+                className="flex-shrink-0 w-40 md:w-48 h-24 md:h-32 flex items-center justify-center p-4 md:p-6 rounded-xl md:rounded-2xl bg-gray-50 hover:bg-gray-100 transition-colors duration-300 group"
               >
-                <div className="relative w-full h-16 flex items-center justify-center">
+                <div className="relative w-full h-12 md:h-16 flex items-center justify-center">
                   <Image
                     src={client.logo}
                     alt={client.name}
                     width={120}
                     height={60}
                     className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300 opacity-70 group-hover:opacity-100"
-                    unoptimized={client.logo.endsWith('.gif')} // Handle GIF files
+                    unoptimized={client.logo.endsWith('.gif')}
+                    loading="lazy"
                   />
                 </div>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         </div>

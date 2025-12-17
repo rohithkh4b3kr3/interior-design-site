@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useMemo } from "react";
 
 const features = [
   {
@@ -54,8 +55,19 @@ const cardVariants = {
 };
 
 export default function FeatureGrid() {
+  // Memoize feature list items
+  const featureListItems = useMemo(
+    () => [
+      "Space planning & layout optimization",
+      "Material & furniture sourcing",
+      "3D visualizations & renderings",
+      "Complete project execution",
+    ],
+    []
+  );
+
   return (
-    <section className="mx-auto max-w-7xl px-6 py-32 bg-gradient-to-b from-white to-[#efefec]/50">
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 py-20 md:py-32 bg-gradient-to-b from-white to-[#efefec]/50">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -121,12 +133,7 @@ export default function FeatureGrid() {
               to final styling, we handle every detail with precision and care.
             </p>
             <ul className="space-y-4 text-gray-600 mb-8">
-              {[
-                "Space planning & layout optimization",
-                "Material & furniture sourcing",
-                "3D visualizations & renderings",
-                "Complete project execution",
-              ].map((item, i) => (
+              {featureListItems.map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#8ca77c]"></div>
                   <span>{item}</span>
