@@ -48,7 +48,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-[85vh] max-h-[800px] flex items-center justify-center overflow-hidden bg-gray-900 pt-20 md:pt-0">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900 pt-20 md:pt-0">
       {/* Background Images Carousel */}
       <div className="absolute inset-0 z-0">
         {commercialImages.map((img, index) => (
