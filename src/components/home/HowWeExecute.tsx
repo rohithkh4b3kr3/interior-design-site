@@ -70,8 +70,8 @@ export default function HowWeExecute() {
         >
           Execution Excellence
         </motion.span>
-        <h2 className="font-[var(--font-inter-tight)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-          How We <span className="text-[#8ca77c]">Execute</span>
+        <h2 className="font-[var(--font-inter-tight)] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-gray-900">
+          How We Execute Projects
         </h2>
         <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Execution is where most projects fail. At Intech, execution is engineered — not improvised.

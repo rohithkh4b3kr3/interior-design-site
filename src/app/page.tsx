@@ -1,30 +1,50 @@
 import Hero from "@/components/home/Hero";
-import ClientsSection from "@/components/home/ClientsSection";
+import CredibilityStrip from "@/components/home/CredibilityStrip";
+import WhoWeAre from "@/components/home/WhoWeAre";
+import ServicesOverview from "@/components/home/ServicesOverview";
 import ServicesSegmented from "@/components/home/ServicesSegmented";
 import HowWeExecute from "@/components/home/HowWeExecute";
+import ProcessSection from "@/components/home/ProcessSection";
 import Founder from "@/components/home/Founder";
+import ClientsSection from "@/components/home/ClientsSection";
 import WhyIntech from "@/components/home/WhyIntech";
+import FinalCTA from "@/components/home/FinalCTA";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen overflow-x-hidden">
-      {/* 1. Authority (Hero) */}
+    <main className="min-h-screen overflow-x-hidden bg-white">
+      {/* 1. Hero - Authority */}
       <Hero />
       
-      {/* 2. Trust (Clients + Experience) */}
-      <ClientsSection />
+      {/* 2. Credibility Strip - Trust */}
+      <CredibilityStrip />
       
-      {/* 3. Clarity (What we do) */}
+      {/* 3. Who We Are - Short Intro */}
+      <WhoWeAre />
+      
+      {/* 4. Services Overview */}
+      <ServicesOverview />
+      
+      {/* 5. Segmentation - Corporate vs Residential */}
       <ServicesSegmented />
       
-      {/* 4. Execution (How we work) */}
+      {/* 6. Execution Credibility */}
       <HowWeExecute />
       
-      {/* 5. Leadership (Founder) */}
+      {/* 7. Process Section */}
+      <ProcessSection />
+      
+      {/* 8. Founder & Leadership */}
       <Founder />
       
-      {/* 6. Why Intech (Differentiators) */}
+      {/* 9. Clients */}
+      <ClientsSection />
+      
+      {/* 10. Why Intech */}
       <WhyIntech />
+      
+      {/* 11. Final CTA */}
+      <FinalCTA />
     </main>
   );
 }
