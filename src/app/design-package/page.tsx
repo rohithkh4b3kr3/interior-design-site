@@ -99,29 +99,13 @@ export default function DesignPackagePage() {
           transition={{ duration: 0.8 }}
           className="text-center max-w-3xl mx-auto"
         >
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-2 rounded-full bg-[#8ca77c]/10 text-[#8ca77c] text-sm font-medium mb-4"
-          >
-            Architectural Design Services
-          </motion.span>
-          <h1 className="font-[var(--font-inter-tight)] text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            Design{" "}
-            <span className="text-[#8ca77c]">Packages</span>
+          <h1 className="font-[var(--font-inter-tight)] text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900">
+            Architectural & Technical Design Services — Built for Execution
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed mb-8">
-            Professional architectural design services tailored to your needs.
-            From basic layouts to complete design solutions with 3D visualizations.
+          <p className="text-lg text-gray-700 leading-relaxed mb-8 max-w-3xl mx-auto">
+            Practical planning focused on buildability, compliance, and usability. 
+            Our design services integrate seamlessly with construction execution.
           </p>
-          <div className="bg-[#8ca77c]/10 rounded-2xl p-6 text-left max-w-2xl mx-auto">
-            <p className="text-sm text-gray-700 mb-2">
-              <strong>Special Offer:</strong> Design package is{" "}
-              <span className="text-[#8ca77c] font-semibold">FREE</span> when you
-              choose our construction services!
-            </p>
-          </div>
         </motion.div>
       </section>
 
@@ -226,19 +210,14 @@ export default function DesignPackagePage() {
                 </div>
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full rounded-full bg-black text-white py-4 font-medium hover:bg-gray-800 transition-colors duration-200 mb-4"
-              >
-                Get This Package
-              </motion.button>
-
-              <Link
-                href="/contact-us"
-                className="block text-center text-sm text-[#8ca77c] hover:text-[#7a9570] transition-colors"
-              >
-                Schedule Consultation →
+              <Link href="/contact-us">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full rounded-lg bg-gray-900 text-white py-4 font-medium hover:bg-gray-800 transition-colors duration-200"
+                >
+                  Request a Design Strategy Session
+                </motion.button>
               </Link>
             </motion.div>
           ))}

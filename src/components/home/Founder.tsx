@@ -27,9 +27,9 @@ export default function Founder() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="font-[var(--font-inter-tight)] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-8"
+          className="font-[var(--font-inter-tight)] text-3xl sm:text-4xl font-bold tracking-tight mb-6 text-gray-900"
         >
-          Leadership That <span className="text-[#8ca77c]">Delivers</span>
+          Founder & Managing Director — Mr. S. Shankaran
         </motion.h2>
 
         <motion.div
@@ -40,18 +40,19 @@ export default function Founder() {
           className="prose prose-lg max-w-none"
         >
           <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
-            Intech Designers and Planners is led by <strong className="text-gray-900">Mr. S. Shankaran</strong>, Founder & Managing Director, with over <strong className="text-[#8ca77c]">30 years</strong> of hands-on experience in civil contracting, project management, real estate development, and interior execution.
+            Mr. S. Shankaran brings over three decades of hands-on experience across civil contracting, project management, real estate development, and interior execution.
           </p>
 
-          <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
-            A graduate of the <strong className="text-gray-900">Government Technical Institute, Chennai</strong>, with formal training in Interior Design, he combines engineering rigour with design understanding — ensuring projects are delivered with clarity, discipline, and long-term reliability.
+          <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-8">
+            A graduate of the <strong className="text-gray-900">Government Technical Institute, Chennai</strong>, with formal training in Interior Design, he combines engineering rigour with design understanding — a foundation that defines Intech&apos;s execution philosophy.
           </p>
 
-          <div className="bg-white rounded-2xl p-6 md:p-8 border border-gray-200 shadow-sm mt-8">
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed italic">
-              &quot;This is not a delegation-driven organisation. Leadership remains involved at critical stages — planning, mobilisation, and delivery — ensuring discipline is maintained regardless of project size or location. Experience on site matters more than titles on paper.&quot;
-            </p>
-          </div>
+          <Link
+            href="/contact-us"
+            className="inline-flex items-center text-gray-900 font-medium hover:text-[#8ca77c] transition-colors"
+          >
+            Read more about our leadership →
+          </Link>
         </motion.div>
 
         {/* Key Points */}

@@ -251,23 +251,40 @@ export default function ConstructionPackagePage() {
           transition={{ duration: 0.8 }}
           className="text-center max-w-3xl mx-auto"
         >
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-block px-4 py-2 rounded-full bg-[#8ca77c]/10 text-[#8ca77c] text-sm font-medium mb-4"
-          >
-            Turnkey Construction Services
-          </motion.span>
-          <h1 className="font-[var(--font-inter-tight)] text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            Home Construction{" "}
-            <span className="text-[#8ca77c]">Packages</span>
+          <h1 className="font-[var(--font-inter-tight)] text-4xl md:text-5xl font-bold tracking-tight mb-6 text-gray-900">
+            Structured Construction Packages — Engineered for Clarity & Quality
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Choose from our comprehensive construction packages designed to deliver
-            your dream home with complete transparency, quality assurance, and professional
-            project management.
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Transparent construction packages with defined specifications, 
+            single-point accountability, and quality-controlled execution.
           </p>
+        </motion.div>
+      </section>
+
+      {/* Trust Block */}
+      <section className="mx-auto max-w-7xl px-6 mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-gray-200"
+        >
+          <h2 className="font-[var(--font-inter-tight)] text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+            Why Choose Our Construction Execution
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              "Single-point accountability",
+              "Project managers & site supervisors",
+              "Transparent BOQs & no hidden costs",
+              "Quality materials with ISI compliance and on-site QA checks",
+            ].map((item, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#8ca77c] mt-2 flex-shrink-0"></div>
+                <span className="text-base text-gray-700">{item}</span>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </section>
 
@@ -338,19 +355,14 @@ export default function ConstructionPackagePage() {
                 ))}
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full rounded-full bg-black text-white py-4 font-medium hover:bg-gray-800 transition-colors duration-200 mb-4"
-              >
-                Get Detailed Specification
-              </motion.button>
-
-              <Link
-                href="/contact-us"
-                className="block text-center text-sm text-[#8ca77c] hover:text-[#7a9570] transition-colors"
-              >
-                Contact for Quote →
+              <Link href="/contact-us">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full rounded-lg bg-gray-900 text-white py-4 font-medium hover:bg-gray-800 transition-colors duration-200 mb-4"
+                >
+                  Schedule a Site Feasibility Call
+                </motion.button>
               </Link>
             </motion.div>
           ))}
@@ -363,43 +375,26 @@ export default function ConstructionPackagePage() {
           viewport={{ once: true }}
           className="bg-white rounded-3xl p-10 shadow-sm"
         >
-          <h2 className="font-[var(--font-inter-tight)] text-3xl font-bold mb-6">
-            Why Choose Our Construction Packages?
+          <h2 className="font-[var(--font-inter-tight)] text-2xl md:text-3xl font-bold mb-6 text-gray-900">
+            Our Approach
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <div className="w-12 h-12 rounded-full bg-[#8ca77c]/10 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-[#8ca77c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              "Work Breakdown Structure",
+              "Milestone-driven delivery",
+              "Periodic progress reporting",
+              "Handover documentation",
+            ].map((item, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#8ca77c] mt-2 flex-shrink-0"></div>
+                <div>
+                  <h3 className="font-semibold mb-1 text-gray-900">{item.split(":")[0]}</h3>
+                  {item.includes(":") && (
+                    <p className="text-sm text-gray-600">{item.split(":")[1].trim()}</p>
+                  )}
+                </div>
               </div>
-              <h3 className="font-semibold mb-2">Transparent Pricing</h3>
-              <p className="text-sm text-gray-600">
-                No hidden costs. All specifications clearly mentioned upfront.
-              </p>
-            </div>
-            <div>
-              <div className="w-12 h-12 rounded-full bg-[#8ca77c]/10 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-[#8ca77c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="font-semibold mb-2">On-Time Delivery</h3>
-              <p className="text-sm text-gray-600">
-                Professional project management ensures timely completion.
-              </p>
-            </div>
-            <div>
-              <div className="w-12 h-12 rounded-full bg-[#8ca77c]/10 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-[#8ca77c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                </svg>
-              </div>
-              <h3 className="font-semibold mb-2">Quality Assurance</h3>
-              <p className="text-sm text-gray-600">
-                Premium materials and skilled craftsmanship in every detail.
-              </p>
-            </div>
+            ))}
           </div>
         </motion.div>
       </section>

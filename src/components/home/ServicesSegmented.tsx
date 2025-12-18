@@ -4,16 +4,17 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 const corporateBullets = [
-  "Corporate Interiors",
-  "Corporate Civil Works",
-  "Facility Maintenance (AMC)",
-  "Sports Infrastructure",
+  "Office & facility execution",
+  "Healthcare & institutional projects",
+  "Civil & retrofit works",
+  "Long-term maintenance support",
 ];
 
 const residentialBullets = [
-  "Residential Interiors",
-  "Residential Construction",
-  "Architectural Planning",
+  "Residential interiors",
+  "Turnkey home construction",
+  "Budget-aligned execution",
+  "Clear scope & timelines",
 ];
 
 export default function ServicesSegmented() {

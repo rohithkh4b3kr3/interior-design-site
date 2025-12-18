@@ -6,8 +6,8 @@ import ServicesSegmented from "@/components/home/ServicesSegmented";
 import HowWeExecute from "@/components/home/HowWeExecute";
 import ProcessSection from "@/components/home/ProcessSection";
 import Founder from "@/components/home/Founder";
+import FeaturedProjects from "@/components/home/FeaturedProjects";
 import ClientsSection from "@/components/home/ClientsSection";
-import WhyIntech from "@/components/home/WhyIntech";
 import FinalCTA from "@/components/home/FinalCTA";
 
 export default function HomePage() {
@@ -37,11 +37,11 @@ export default function HomePage() {
       {/* 8. Founder & Leadership */}
       <Founder />
       
-      {/* 9. Clients */}
-      <ClientsSection />
+      {/* 9. Featured Projects */}
+      <FeaturedProjects />
       
-      {/* 10. Why Intech */}
-      <WhyIntech />
+      {/* 10. Clients */}
+      <ClientsSection />
       
       {/* 11. Final CTA */}
       <FinalCTA />

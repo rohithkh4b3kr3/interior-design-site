@@ -158,7 +158,7 @@ export default function Hero() {
                 whileTap={{ scale: 0.98 }}
                 className="px-6 py-3 bg-white text-gray-900 rounded-lg font-semibold text-sm md:text-base hover:bg-gray-100 transition-all duration-200 shadow-xl"
               >
-                Request Project Consultation
+                Speak With a Project Manager
               </motion.button>
             </Link>
             <Link href="/our-works">
@@ -167,7 +167,7 @@ export default function Hero() {
                 whileTap={{ scale: 0.98 }}
                 className="px-6 py-3 bg-transparent border-2 border-white/30 text-white rounded-lg font-semibold text-sm md:text-base hover:bg-white/10 hover:border-white/50 backdrop-blur-sm transition-all duration-200"
               >
-                Explore Capabilities
+                Explore Our Capabilities
               </motion.button>
             </Link>
           </motion.div>

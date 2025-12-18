@@ -36,7 +36,7 @@ export default function FinalCTA() {
               whileTap={{ scale: 0.98 }}
               className="px-8 py-4 bg-transparent border-2 border-white/30 text-white rounded-lg font-semibold text-base hover:bg-white/10 hover:border-white/50 transition-all duration-200"
             >
-              Plan Your Home Within Budget
+              Request a Project Consultation
             </motion.button>
           </Link>
         </div>

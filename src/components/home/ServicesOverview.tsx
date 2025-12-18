@@ -34,6 +34,11 @@ const services = [
     description: "Design and execution of sports courts with performance-oriented engineering.",
     link: "/our-works",
   },
+  {
+    title: "Facility Maintenance (AMC & On-Call)",
+    description: "Long-term maintenance support for corporates, hospitals, institutions, and commercial facilities with preventive maintenance and rapid response.",
+    link: "/our-works",
+  },
 ];
 
 const containerVariants = {
