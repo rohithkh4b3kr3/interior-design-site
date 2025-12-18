@@ -232,47 +232,32 @@ export default function DesignPackagePage() {
           viewport={{ once: true }}
           className="bg-white rounded-3xl p-10 shadow-sm"
         >
-          <h2 className="font-[var(--font-inter-tight)] text-3xl font-bold mb-8 text-center">
-            Our Design Process
+          <h2 className="font-[var(--font-inter-tight)] text-2xl md:text-3xl font-bold mb-8 text-center text-gray-900">
+            Design Services Include
           </h2>
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
             {[
-              {
-                step: "01",
-                title: "Consultation",
-                description: "Understand your requirements, site visit, and initial discussions",
-              },
-              {
-                step: "02",
-                title: "Concept Design",
-                description: "Create initial layouts and 3D concepts for your approval",
-              },
-              {
-                step: "03",
-                title: "Development",
-                description: "Develop detailed drawings and technical specifications",
-              },
-              {
-                step: "04",
-                title: "Delivery",
-                description: "Final deliverables and ongoing support during construction",
-              },
+              "Site analysis & zoning",
+              "MEP integration planning",
+              "Structural coordination",
+              "Sanction-ready drawings for authorities",
             ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="w-16 h-16 rounded-full bg-[#8ca77c]/10 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-[#8ca77c]">{item.step}</span>
-                </div>
-                <h3 className="font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.description}</p>
-              </motion.div>
+              <div key={index} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#8ca77c] mt-2 flex-shrink-0"></div>
+                <span className="text-sm text-gray-700">{item}</span>
+              </div>
             ))}
+          </div>
+          <div className="text-center">
+            <Link href="/contact-us">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-4 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors duration-200"
+              >
+                Request a Design Strategy Session
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </section>
