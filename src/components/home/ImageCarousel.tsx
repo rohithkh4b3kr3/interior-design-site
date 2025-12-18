@@ -46,7 +46,7 @@ export default function ImageCarousel({ images, projectName }: ImageCarouselProp
   }, [currentIndex, images]);
 
   return (
-    <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-xl md:rounded-2xl overflow-hidden group">
+    <div className="relative w-full h-full min-h-[250px] sm:min-h-[300px] rounded-xl md:rounded-2xl overflow-hidden group">
       {/* Main Image */}
       <AnimatePresence mode="wait">
         <motion.div
