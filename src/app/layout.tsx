@@ -1,10 +1,11 @@
 import "./globals.css";
 import { inter, interTight } from "@/lib/fonts";
 import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Interior Design Studio | Premium Architecture & Design",
-  description: "Discover modern interior design with our premium architecture and AI-powered design solutions.",
+  title: "Intech Designers & Planners | Design + Build + Maintenance",
+  description: "Design + Build + Maintenance Company delivering interiors, civil works, architectural planning, sports infrastructure and facility support across South India. 30+ years of experience, 500+ projects completed.",
 };
 
 export default function RootLayout({
@@ -19,6 +20,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

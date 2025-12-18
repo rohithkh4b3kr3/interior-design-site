@@ -121,7 +121,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.95 }}
                 className="rounded-full bg-[#8ca77c] px-4 py-2 text-xs font-medium text-white hover:bg-[#7a9570] transition-colors duration-200 shadow-sm"
               >
-                Get Quote
+                Contact
               </motion.button>
             </Link>
 
@@ -185,7 +185,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.98 }}
                 className="rounded-full bg-[#8ca77c] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#7a9570] transition-colors duration-200 shadow-sm hover:shadow-md"
               >
-                Get Quote
+                Speak With a Project Manager
               </motion.button>
             </Link>
           </div>
