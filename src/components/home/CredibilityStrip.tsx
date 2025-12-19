@@ -3,71 +3,85 @@
 import { motion } from "framer-motion";
 
 const credibilityItems = [
-  { label: "30+ Years", sublabel: "Leadership Experience" },
-  { label: "Multi-City", sublabel: "Project Execution" },
-  { label: "Corporate & Institutional", sublabel: "Expertise" },
-  { label: "Dedicated", sublabel: "Maintenance Support" },
+  { value: "30+", label: "Years of Leadership Experience" },
+  { value: "Pan-South India", label: "Multi-City Project Execution" },
+  { value: "Corporate & Institutional", label: "Sector Expertise" },
+  { value: "End-to-End", label: "Maintenance & Support" },
 ];
 
 const trustedClients = [
   "TVS",
   "EMR Tapper",
-  "Sringeri Sarada Equitas Hospital",
+  "Sri Sarada Equitas Hospital",
   "Rajiv Gandhi Engineering College",
   "Madras Auto Service",
 ];
 
 export default function CredibilityStrip() {
   return (
-    <section className="bg-white border-y border-gray-200">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-12">
-        {/* Trusted By Text */}
+    <section className="bg-[#fafafa] border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+
+        {/* TRUSTED BY */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-14"
         >
-          <p className="text-sm font-medium text-gray-600 mb-6">
-            Trusted by corporates, institutions, and healthcare facilities across South India
+          <p className="text-sm uppercase tracking-[0.25em] text-gray-500 mb-4">
+            Trusted Relationships
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-3 md:gap-5 text-sm text-gray-600">
-            {trustedClients.map((client, index) => (
-              <span key={index}>
-                {client}
-                {index < trustedClients.length - 1 && <span className="mx-2">•</span>}
-              </span>
-            ))}
-          </div>
+
+          <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+            Long-standing partnerships with corporates, institutions, and
+            healthcare organizations across South India.
+          </p>
         </motion.div>
 
-        {/* Quick Facts */}
+        {/* CLIENT NAMES */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-sm md:text-base text-gray-600 mb-20"
+        >
+          {trustedClients.map((client, index) => (
+            <span
+              key={index}
+              className="tracking-wide whitespace-nowrap"
+            >
+              {client}
+            </span>
+          ))}
+        </motion.div>
+
+        {/* DIVIDER */}
+        <div className="h-px bg-gray-200 mb-16" />
+
+        {/* CREDIBILITY METRICS */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-y-14 gap-x-8"
         >
           {credibilityItems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 + index * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
+            <div key={index} className="text-center px-4">
+              <div className="text-3xl md:text-4xl font-semibold text-gray-900 mb-3">
+                {item.value}
+              </div>
+              <div className="text-sm md:text-base text-gray-600 leading-snug">
                 {item.label}
               </div>
-              <div className="text-sm text-gray-600">{item.sublabel}</div>
-            </motion.div>
+            </div>
           ))}
         </motion.div>
+
       </div>
     </section>
   );
 }
-

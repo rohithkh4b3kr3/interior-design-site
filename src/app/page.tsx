@@ -1,7 +1,8 @@
 import Hero from "@/components/home/Hero";
-import CredibilityStrip from "@/components/home/CredibilityStrip";
-import WhoWeAre from "@/components/home/WhoWeAre";
-import ServicesOverview from "@/components/home/ServicesOverview";
+// import CredibilityStrip from "@/components/home/CredibilityStrip";
+// import WhoWeAre from "@/components/home/WhoWeAre";
+import CredibilityAndCapabilities from "@/components/home/CredibilityAndCapabilities ";
+// import ServicesOverview from "@/components/home/ServicesOverview";
 import ServicesSegmented from "@/components/home/ServicesSegmented";
 import HowWeExecute from "@/components/home/HowWeExecute";
 import ProcessSection from "@/components/home/ProcessSection";
@@ -12,18 +13,18 @@ import FinalCTA from "@/components/home/FinalCTA";
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-white">
+    <main className="min-h-screen overflow-x-hidden">
       {/* 1. Hero - Authority */}
       <Hero />
-      
+      <CredibilityAndCapabilities />
       {/* 2. Credibility Strip - Trust */}
-      <CredibilityStrip />
+      {/* <CredibilityStrip /> */}
       
       {/* 3. Who We Are - Short Intro */}
-      <WhoWeAre />
+      {/* <WhoWeAre /> */}
       
       {/* 4. Services Overview */}
-      <ServicesOverview />
+      {/* <ServicesOverview /> */}
       
       {/* 5. Segmentation - Corporate vs Residential */}
       <ServicesSegmented />

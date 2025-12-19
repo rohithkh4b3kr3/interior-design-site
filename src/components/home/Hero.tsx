@@ -1,193 +1,149 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
-const commercialImages = [
-  "/images/Commercial or Corporate Clients/ashok leyland auditorium/ashok leyland-1.jpg",
-  "/images/Commercial or Corporate Clients/HDB financial services/HDB financial services-1.jpg",
-  "/images/Commercial or Corporate Clients/mainetti/mainetti-1.jpg",
-  "/images/Commercial or Corporate Clients/Yaskawa-India/Yaskawa-1.jpg",
-  "/images/Commercial or Corporate Clients/mahathi software private limited/mahathi software private limited-1.jpg",
-  "/images/Commercial or Corporate Clients/jeep show room/jeep show room-1.jpg",
+const heroImages = [
+  {
+    src: "/images/Commercial or Corporate Clients/ashok leyland auditorium/ashok leyland-1.jpg",
+    alt: "Ashok Leyland Auditorium - Commercial Interior Project",
+  },
+  {
+    src: "/images/Commercial or Corporate Clients/HDB financial services/HDB financial services-1.jpg",
+    alt: "HDB Financial Services - Corporate Office Interior",
+  },
+  {
+    src: "/images/Commercial or Corporate Clients/mahathi software private limited/mahathi software private limited-1.jpg",
+    alt: "Mahathi Software - Modern Office Space",
+  },
+  {
+    src: "/images/Commercial or Corporate Clients/Yaskawa-India/Yaskawa-1.jpg",
+    alt: "Yaskawa India - Industrial Office Design",
+  },
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.25, 0.1, 0.25, 1],
-    },
-  },
-};
 
 export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % commercialImages.length);
-    }, 5000);
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000); // Change image every 5 seconds
+
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900 pt-20 md:pt-0">
-      {/* Background Images Carousel */}
-      <div className="absolute inset-0 z-0">
-        {commercialImages.map((img, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: index === currentImageIndex ? 1 : 0,
-              scale: index === currentImageIndex ? 1.05 : 1,
-            }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={img}
-              alt={`Commercial Project ${index + 1}`}
-              fill
-              className="object-cover"
-              priority={index === 0}
-              unoptimized
-            />
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/65 to-black/55"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-          </motion.div>
-        ))}
-      </div>
+    <section className="relative bg-[#0f1115] text-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-28 lg:py-36 grid lg:grid-cols-2 gap-16 items-center">
 
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 z-10 opacity-5">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: "50px 50px",
-          }}
-        ></div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 w-full">
+        {/* LEFT CONTENT */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="max-w-5xl"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="max-w-xl"
         >
-          {/* Badge */}
-          <motion.div
-            variants={itemVariants}
-            className="inline-block mb-4"
-          >
-            <span className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-medium">
-              Design + Build + Maintenance Company
-            </span>
-          </motion.div>
+          {/* Overline */}
+          <p className="text-sm uppercase tracking-[0.25em] text-[#8ca77c] mb-6">
+            Design • Build • Maintain
+          </p>
 
-          {/* H1 - Large but not too big */}
-          <motion.h1
-            variants={itemVariants}
-            className="font-[var(--font-inter-tight)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-4 leading-[1.1]"
-          >
-            Design. Build. Maintain.
-          </motion.h1>
+          {/* Headline */}
+          <h1 className="font-[var(--font-inter-tight)] text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
+            Engineering spaces <br className="hidden sm:block" />
+            that businesses rely on.
+          </h1>
 
-          {/* H2 - Concise */}
-          <motion.p
-            variants={itemVariants}
-            className="text-lg sm:text-xl md:text-2xl font-light text-white/90 mb-6 leading-relaxed max-w-3xl"
-          >
-            Integrated interiors, civil works, architectural planning, and facility maintenance — delivered with engineering discipline across South India.
-          </motion.p>
+          {/* Description */}
+          <p className="text-lg text-white/70 leading-relaxed mb-10">
+            We deliver commercial interiors, civil construction, architectural
+            planning, and facility maintenance for enterprises across South India —
+            with precision, accountability, and long-term support.
+          </p>
 
-          {/* Stats Row - Compact */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap gap-6 mb-8"
-          >
+          {/* Stats */}
+          <div className="flex gap-10 mb-12">
             {[
-              { number: "30+", label: "Years" },
-              { number: "500+", label: "Projects" },
-              { number: "12+", label: "Cities" },
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 + index * 0.1 }}
-                className="border-l-2 border-[#8ca77c] pl-3"
-              >
-                <div className="text-2xl sm:text-3xl font-bold text-[#8ca77c] font-[var(--font-inter-tight)]">
-                  {stat.number}
+              { value: "30+", label: "Years of Expertise" },
+              { value: "500+", label: "Projects Delivered" },
+              { value: "12+", label: "Operational Cities" },
+            ].map((item, i) => (
+              <div key={i}>
+                <div className="text-2xl font-semibold text-[#8ca77c]">
+                  {item.value}
                 </div>
-                <div className="text-xs sm:text-sm text-white/70">{stat.label}</div>
-              </motion.div>
+                <div className="text-sm text-white/60">
+                  {item.label}
+                </div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
-          {/* CTA Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap items-center gap-3"
-          >
+          {/* CTAs */}
+          <div className="flex gap-4 flex-wrap">
             <Link href="/contact-us">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-6 py-3 bg-white text-gray-900 rounded-lg font-semibold text-sm md:text-base hover:bg-gray-100 transition-all duration-200 shadow-xl"
-              >
-                Speak With a Project Manager
-              </motion.button>
+              <button className="px-7 py-3 bg-[#8ca77c] text-black font-medium rounded-md hover:bg-[#9bb88b] transition">
+                Speak with our team
+              </button>
             </Link>
-            <Link href="/our-works">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-6 py-3 bg-transparent border-2 border-white/30 text-white rounded-lg font-semibold text-sm md:text-base hover:bg-white/10 hover:border-white/50 backdrop-blur-sm transition-all duration-200"
-              >
-                Explore Our Capabilities
-              </motion.button>
-            </Link>
-          </motion.div>
-        </motion.div>
-      </div>
 
-      {/* Image Indicator Dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-        {commercialImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentImageIndex(index)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              index === currentImageIndex
-                ? "bg-white w-8"
-                : "bg-white/40 hover:bg-white/60 w-1.5"
-            }`}
-            aria-label={`Go to image ${index + 1}`}
-          />
-        ))}
+            <Link href="/our-works">
+              <button className="px-7 py-3 border border-white/30 text-white rounded-md hover:border-white hover:bg-white/5 transition">
+                View our work
+              </button>
+            </Link>
+          </div>
+        </motion.div>
+
+        {/* RIGHT IMAGE CAROUSEL */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.1, ease: "easeOut" }}
+          className="relative w-full h-[420px] lg:h-[520px] rounded-2xl overflow-hidden"
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentImageIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={heroImages[currentImageIndex].src}
+                alt={heroImages[currentImageIndex].alt}
+                fill
+                className="object-cover"
+                priority={currentImageIndex === 0}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Subtle overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+
+          {/* Image indicators */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex
+                    ? "w-8 bg-white"
+                    : "w-1.5 bg-white/40 hover:bg-white/60"
+                }`}
+                aria-label={`Go to image ${index + 1}`}
+              />
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

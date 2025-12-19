@@ -4,28 +4,28 @@ import { motion } from "framer-motion";
 
 const executionPoints = [
   {
-    title: "Single-Point Project Ownership",
-    description: "One accountable project manager oversees your entire project from start to finish, eliminating coordination gaps.",
+    title: "Single-Point Ownership",
+    description: "One accountable project manager oversees your entire project from start to finish.",
   },
   {
-    title: "Defined Scope & BOQs Before Execution",
-    description: "We establish clear scope definitions and Bill of Quantities upfront, preventing scope creep and cost overruns.",
+    title: "Defined Scope & BOQs",
+    description: "Clear scope definitions and Bill of Quantities upfront, preventing scope creep.",
   },
   {
-    title: "Supervisor-Led Site Control",
-    description: "Every project site is managed by experienced supervisors who ensure quality and discipline at all stages.",
+    title: "Supervisor-Led Control",
+    description: "Experienced supervisors ensure quality and discipline at all stages.",
   },
   {
     title: "Stage-Wise Quality Checks",
-    description: "Quality inspections are built into our execution framework at defined milestones, not after completion.",
+    description: "Quality inspections built into execution framework at defined milestones.",
   },
   {
     title: "Coordinated Trade Sequencing",
-    description: "We sequence all trades (civil, electrical, plumbing, interiors) to avoid conflicts and delays.",
+    description: "All trades sequenced to avoid conflicts and delays.",
   },
   {
-    title: "Post-Handover Maintenance Support",
-    description: "Our commitment extends beyond handover with maintenance support and AMC services for long-term performance.",
+    title: "Post-Handover Support",
+    description: "Maintenance support and AMC services for long-term performance.",
   },
 ];
 
@@ -34,89 +34,72 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: [0.25, 0.1, 0.25, 1],
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
 export default function HowWeExecute() {
   return (
-    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-white">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="text-center mb-12 md:mb-16"
-      >
-        <motion.span
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+    <section className="bg-[#0f1115] text-white py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="inline-block px-4 py-2 rounded-full bg-[#8ca77c]/10 text-[#8ca77c] text-sm font-medium mb-4"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 lg:mb-20 max-w-3xl mx-auto"
         >
-          Execution Excellence
-        </motion.span>
-        <h2 className="font-[var(--font-inter-tight)] text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 text-gray-900">
-          How We Execute Projects
-        </h2>
-        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Execution is where most projects fail. At Intech, execution is engineered — not improvised.
-        </p>
-      </motion.div>
+          <p className="text-xs uppercase tracking-[0.2em] text-[#8ca77c] mb-6">
+            Execution Excellence
+          </p>
+          <h2 className="font-[var(--font-inter-tight)] text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight mb-6">
+            How We Execute Projects
+          </h2>
+          <p className="text-lg text-white/70 leading-relaxed">
+            Execution is where most projects fail. At Intech, execution is engineered — not improvised.
+          </p>
+        </motion.div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-      >
-        {executionPoints.map((point, index) => (
-          <motion.div
-            key={index}
-            variants={itemVariants}
-            whileHover={{ y: -8, transition: { duration: 0.3 } }}
-            className="relative p-6 md:p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:border-[#8ca77c]/30 transition-all duration-300 shadow-sm hover:shadow-lg"
-          >
-            <div className="absolute top-6 right-6 w-12 h-12 rounded-xl bg-[#8ca77c]/10 flex items-center justify-center">
-              <span className="text-2xl font-bold text-[#8ca77c]">{index + 1}</span>
-            </div>
-            <h3 className="font-[var(--font-inter-tight)] text-xl md:text-2xl font-bold mb-3 pr-16 text-gray-900">
-              {point.title}
-            </h3>
-            <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-              {point.description}
-            </p>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Bottom CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-        className="mt-12 md:mt-16 text-center"
-      >
-        <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-          This structure reduces rework, prevents cost overruns, and protects timelines — converting skeptical visitors into confident prospects.
-        </p>
-      </motion.div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {executionPoints.map((point, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ y: -4, borderColor: "rgba(140, 167, 124, 0.5)" }}
+              className="group relative p-8 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300"
+            >
+              <div className="absolute top-6 right-6 w-10 h-10 rounded-lg bg-[#8ca77c]/20 flex items-center justify-center">
+                <span className="text-lg font-medium text-[#8ca77c]">{index + 1}</span>
+              </div>
+              <h3 className="font-[var(--font-inter-tight)] text-xl font-medium mb-3 pr-14 text-white">
+                {point.title}
+              </h3>
+              <p className="text-sm text-white/60 leading-relaxed">
+                {point.description}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }
