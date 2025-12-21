@@ -25,8 +25,8 @@ const commercialProjects = [
     area: "15,000 sq ft",
     duration: "6 months",
     scope: "Complete auditorium interior execution with advanced acoustics and modular seating systems",
-    challenge: "Large-scale auditorium with acoustic and seating requirements",
-    solution: "Integrated design-build execution with acoustic engineering coordination",
+    // challenge: "Large-scale auditorium with acoustic and seating requirements",
+    // solution: "Integrated design-build execution with acoustic engineering coordination",
     images: getProjectImages("ashok leyland auditorium", "ashok leyland", 4),
   },
   {

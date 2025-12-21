@@ -93,7 +93,7 @@ export default function ServicesSegmented() {
               ))}
             </ul>
             <Link
-              href="/interior"
+              href="/residential"
               className="inline-flex items-center gap-2 text-[#8ca77c] font-medium hover:text-[#9bb88b] transition-colors group/link"
             >
               Residential Solutions
