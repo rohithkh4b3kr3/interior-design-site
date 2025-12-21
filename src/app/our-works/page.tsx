@@ -616,12 +616,9 @@ export default function OurWorksPage() {
           className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            {
-              number: `${activeTab === "corporate" ? commercialProjects.length : residentialProjects.length}+`,
-              label: activeTab === "corporate" ? "Corporate Projects" : "Residential Projects",
-            },
-            { number: "500+", label: "Total sq ft Delivered" },
-            { number: "98%", label: "Client Satisfaction" },
+            { number: "30+", label: "Projects Delivered" },
+            { number: "3L+", label: "Total sq ft Delivered" },
+            { number: "99%", label: "Client Satisfaction" },
             { number: "12", label: "Cities Served" },
           ].map((stat, index) => (
             <motion.div
