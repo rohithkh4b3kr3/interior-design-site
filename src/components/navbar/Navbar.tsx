@@ -11,9 +11,8 @@ const navItems = [
   { name: "Design Package", href: "/design-package" },
   { name: "Our Works", href: "/our-works" },
   { name: "Interior", href: "/interior" },
-  { name: "Contact Us", href: "/contact-us" },
   { name: "Residential", href: "/residential" },
-
+  { name: "Contact Us", href: "/contact-us" },
 ];
 
 export default function Navbar() {
@@ -30,16 +29,19 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
- const navStyle = useMemo(
-  () => ({
-    backgroundColor: isScrolled
-      ? "#ffffff"        // when scrolled
-      : "transparent",   // at top
-    backdropFilter: isScrolled ? "blur(18px)" : "none",
-    WebkitBackdropFilter: isScrolled ? "blur(18px)" : "none",
-  }),
-  [isScrolled]
-);
+  /**
+   * Darker glass background for contrast
+   */
+  const navStyle = useMemo(
+    () => ({
+      backgroundColor: isScrolled
+        ? "rgba(230,230,230,0.95)" // darker gray on scroll
+        : "white", // light glass at top
+      backdropFilter: "blur(18px)",
+      WebkitBackdropFilter: "blur(18px)",
+    }),
+    [isScrolled]
+  );
 
   return (
     <>
@@ -48,13 +50,14 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         style={navStyle}
-        className={`fixed top-4 md:top-6 left-1/2 z-50 
-          w-[calc(100%-2rem)] md:w-[calc(100%-3rem)] max-w-7xl 
-          -translate-x-1/2 rounded-full 
-          shadow-md ${isScrolled ? "shadow-xl" : "bg-white/95 backdrop-blur-xl shadow-lg"}`}
+        className={`fixed top-4 md:top-6 left-1/2 z-50
+          w-[calc(100%-2rem)] md:w-[calc(100%-3rem)] max-w-7xl
+          -translate-x-1/2 rounded-full
+          transition-shadow duration-300
+          ${isScrolled ? "shadow-xl" : "shadow-md"}`}
       >
-        <div className="flex items-center justify-between h-14 md:h-16 px-5 md:px-7 lg:px-8">
-          
+        <div className="flex items-center justify-between h-16 md:h-18 px-5 md:px-7 lg:px-8">
+
           {/* LOGO */}
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
             <motion.div
@@ -64,12 +67,12 @@ export default function Navbar() {
               className="flex items-center h-full"
             >
               <Image
-                src="/images/Group.svg"
+                src="/images/logo3.png"
                 alt="Intech Logo"
-                width={220}
-                height={80}
+                width={260}
+                height={60}
                 priority
-                className="max-h-8 md:max-h-10 lg:max-h-11 w-auto object-contain"
+                className="max-h-8 md:max-h-10 lg:max-h-14 w-auto object-contain"
               />
             </motion.div>
           </Link>
@@ -80,7 +83,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative text-gray-700 hover:text-black transition-colors group"
+                className="relative text-gray-600 hover:text-gray-900 transition-colors group"
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[#8ca77c] transition-all duration-300 group-hover:w-full" />
@@ -175,4 +178,4 @@ export default function Navbar() {
       </AnimatePresence>
     </>
   );
-}
+}  
