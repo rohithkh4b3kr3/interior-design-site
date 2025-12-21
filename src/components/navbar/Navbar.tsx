@@ -82,10 +82,10 @@ export default function Navbar() {
               className="cursor-pointer flex items-center"
             >
               <Image
-                src="/images/Logo.jpg"
+                src="/images/Group.svg"
                 alt="Intech Logo"
-                width={120}
-                height={40}
+                width={220}
+                height={80}
                 className="h-7 md:h-8 lg:h-10 w-auto object-contain"
                 priority
                 unoptimized
