@@ -11,3 +11,4 @@ out/
 
 # system
 .DS_Store
+*.exe
