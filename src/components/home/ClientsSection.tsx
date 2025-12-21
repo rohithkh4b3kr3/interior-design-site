@@ -166,18 +166,20 @@ export default function ClientsSection() {
       }
 
       // Background glow animation
-      const bgGlows = sectionRef.current.querySelectorAll(".bg-glow");
-      bgGlows.forEach((glow, index) => {
-        gsap.to(glow, {
-          scale: 1.2,
-          opacity: 0.3,
-          duration: 3,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: index * 0.5,
+      if (sectionRef.current) {
+        const bgGlows = sectionRef.current.querySelectorAll(".bg-glow");
+        bgGlows.forEach((glow, index) => {
+          gsap.to(glow, {
+            scale: 1.2,
+            opacity: 0.3,
+            duration: 3,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            delay: index * 0.5,
+          });
         });
-      });
+      }
 
     }, sectionRef);
 
