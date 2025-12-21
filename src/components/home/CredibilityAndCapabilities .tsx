@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 const credibilityMetrics = [
@@ -13,110 +12,102 @@ const credibilityMetrics = [
 const services = [
   {
     title: "Corporate Interiors",
-    description: "Office spaces, facilities, and institutional interiors with engineering discipline.",
+    description:
+      "Office spaces, facilities, and institutional interiors with engineering discipline.",
     link: "/our-works",
   },
   {
     title: "Residential Interiors",
-    description: "Thoughtful design aligned to real usage, materials, and durability.",
+    description:
+      "Thoughtful design aligned to real usage, materials, and durability.",
     link: "/interior",
   },
   {
     title: "Civil Construction",
-    description: "Complete construction with engineering control and quality systems.",
+    description:
+      "Complete construction with engineering control and quality systems.",
     link: "/construction-package",
   },
   {
     title: "Architectural Planning",
-    description: "Buildable, compliant planning focused on execution clarity.",
+    description:
+      "Buildable, compliant planning focused on execution clarity.",
     link: "/design-package",
   },
   {
     title: "Sports Infrastructure",
-    description: "Engineering-led design and construction of performance facilities.",
+    description:
+      "Engineering-led design and construction of performance facilities.",
     link: "/our-works",
   },
   {
     title: "Facility Maintenance",
-    description: "AMC and maintenance for corporates, hospitals, and institutions.",
+    description:
+      "AMC and maintenance for corporates, hospitals, and institutions.",
     link: "/our-works",
   },
 ];
 
 export default function CredibilityAndCapabilities() {
   return (
-    <section className="bg-[#0f1115] text-white">
+    <section className="relative bg-[#0f1115] text-white overflow-hidden isolate">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-32 space-y-24">
 
         {/* METRICS */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {credibilityMetrics.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="text-center"
-            >
+            <div key={i} className="text-center">
               <div className="text-4xl md:text-5xl font-[var(--font-inter-tight)] font-medium text-[#8ca77c] mb-2">
                 {item.value}
               </div>
               <div className="text-sm text-white/60 uppercase tracking-wider">
                 {item.label}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* WHO WE ARE */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="max-w-4xl mx-auto text-center"
-        >
+        <div className="max-w-4xl mx-auto text-center">
           <p className="text-xs uppercase tracking-[0.2em] text-[#8ca77c] mb-6">
             About Us
           </p>
-          <h2 className="font-[var(--font-inter-tight)] text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight mb-6 text-white">
+          <h2 className="font-[var(--font-inter-tight)] text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight mb-6">
             A design, build, and maintenance firm where execution comes first.
           </h2>
           <p className="text-lg text-white/70 leading-relaxed max-w-2xl mx-auto">
-            Multidisciplinary interiors and construction delivering corporate, institutional, 
-            healthcare, and residential projects across South India.
+            Multidisciplinary interiors and construction delivering corporate,
+            institutional, healthcare, and residential projects across South
+            India.
           </p>
-        </motion.div>
+        </div>
 
         {/* SERVICES */}
         <div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <p className="text-xs uppercase tracking-[0.2em] text-[#8ca77c] mb-4">
               Our Capabilities
             </p>
-            <h3 className="font-[var(--font-inter-tight)] text-2xl md:text-3xl font-medium text-white">
+            <h3 className="font-[var(--font-inter-tight)] text-2xl md:text-3xl font-medium">
               What We Deliver
             </h3>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.6 }}
-                whileHover={{ y: -4 }}
-                className="group rounded-xl border border-white/10 bg-white/5 p-8 hover:border-[#8ca77c]/30 hover:bg-white/10 transition-all duration-300"
+                className="
+                  group rounded-xl
+                  border border-white/10
+                  bg-[#151821]
+                  p-8
+                  transition-all duration-300
+                  hover:border-[#8ca77c]/40
+                  hover:-translate-y-1
+                "
               >
-                <h3 className="font-[var(--font-inter-tight)] text-xl font-medium text-white mb-3 group-hover:text-[#8ca77c] transition-colors">
+                <h3 className="font-[var(--font-inter-tight)] text-xl font-medium mb-3 group-hover:text-[#8ca77c] transition-colors">
                   {service.title}
                 </h3>
                 <p className="text-sm text-white/60 leading-relaxed mb-6">
@@ -127,14 +118,19 @@ export default function CredibilityAndCapabilities() {
                   className="text-sm font-medium text-[#8ca77c] hover:text-[#9bb88b] inline-flex items-center gap-2 transition-colors"
                 >
                   Learn more
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
       </div>
+
+      {/* HARD STOP — prevents any visual bleed */}
+      <div className="absolute inset-x-0 bottom-0 h-px bg-[#0f1115]" />
     </section>
   );
 }

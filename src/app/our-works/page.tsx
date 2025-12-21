@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import ImageCarousel from "@/components/home/ImageCarousel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Helper function to get all images from a folder
 const getProjectImages = (folderName: string, baseName: string, count: number, ext: string = "jpg") => {
@@ -14,7 +14,12 @@ const getProjectImages = (folderName: string, baseName: string, count: number, e
   return images;
 };
 
-// All commercial projects with comprehensive details
+// Helper function to get all images from a residential project folder
+const getResidentialImages = (folderName: string, imageNames: string[]) => {
+  return imageNames.map(name => `/images/Residential/${folderName}/${name}`);
+};
+
+// All commercial projects
 const commercialProjects = [
   {
     id: 1,
@@ -25,8 +30,8 @@ const commercialProjects = [
     area: "15,000 sq ft",
     duration: "6 months",
     scope: "Complete auditorium interior execution with advanced acoustics and modular seating systems",
-    // challenge: "Large-scale auditorium with acoustic and seating requirements",
-    // solution: "Integrated design-build execution with acoustic engineering coordination",
+    challenge: "Large-scale auditorium with acoustic and seating requirements",
+    solution: "Integrated design-build execution with acoustic engineering coordination",
     images: getProjectImages("ashok leyland auditorium", "ashok leyland", 4),
   },
   {
@@ -192,12 +197,160 @@ const commercialProjects = [
   },
 ];
 
+// All residential projects
+const residentialProjects = [
+  {
+    id: 1,
+    name: "Avighna",
+    type: "Luxury Villa",
+    location: "Chennai, Tamil Nadu",
+    area: "8,500 sq ft",
+    duration: "8 months",
+    scope: "Complete luxury villa interior execution with premium finishes, custom furniture, and high-end fixtures",
+    description: "A sophisticated residential project featuring contemporary design with elegant finishes and spacious living areas.",
+    images: getResidentialImages("Avighna", [
+      "avighna-1.jpg",
+      "avighna-2.jpg",
+      "avighna-3.jpg",
+      "avighna-4.jpg",
+      "avighna-5.jpg",
+      "avighna-6.jpg",
+      "avighna-7.jpg",
+    ]),
+  },
+  {
+    id: 2,
+    name: "Casa Grand",
+    type: "Premium Apartment",
+    location: "Chennai, Tamil Nadu",
+    area: "3,200 sq ft",
+    duration: "5 months",
+    scope: "Premium apartment interior with modern design elements, smart home integration, and luxury amenities",
+    description: "Modern apartment design with clean lines, functional spaces, and contemporary aesthetics.",
+    images: getResidentialImages("Casa Grand", [
+      "Casa Grande 1.jpg",
+      "Casa Grand 2.jpg",
+      "Casa Grand 3.jpg",
+      "Casa Grand 4.jpg",
+      "Casa Grand 5.jpg",
+    ]),
+  },
+  {
+    id: 3,
+    name: "Classy Bungalow",
+    type: "Luxury Bungalow",
+    location: "Chennai, Tamil Nadu",
+    area: "12,000 sq ft",
+    duration: "10 months",
+    scope: "Complete bungalow interior execution with grand living spaces, private areas, and outdoor integration",
+    description: "An expansive bungalow featuring luxurious interiors, spacious rooms, and elegant design throughout.",
+    images: getResidentialImages("Classy Bungalow", [
+      "classy bungalow-1.jpg",
+      "classy bungalow-2.jpg",
+      "classy bungalow-3.jpg",
+      "classy bungalow-4.jpg",
+      "classy bungalow-5.jpg",
+      "classy bungalow-6.jpg",
+      "classy bungalow-7.jpg",
+      "classy bungalow-8.jpg",
+      "classy bungalow-9.jpg",
+      "classy bungalow-10.jpg",
+    ]),
+  },
+  {
+    id: 4,
+    name: "Kalpatharu Villa",
+    type: "Luxury Villa",
+    location: "Chennai, Tamil Nadu",
+    area: "10,500 sq ft",
+    duration: "9 months",
+    scope: "Luxury villa interior with custom design elements, premium materials, and sophisticated finishes",
+    description: "A stunning villa showcasing modern luxury with attention to detail and premium craftsmanship.",
+    images: getResidentialImages("Kalpatharu Villa", [
+      "kalpatharu villa-1.jpg",
+      "kalpatharu villa-2.jpg",
+      "kalpatharu villa-3.jpg",
+      "kalpatharu villa-4.jpg",
+      "kalpatharu villa-5.jpg",
+      "kalpatharu villa-6.jpg",
+      "kalpatharu villa-7.jpg",
+      "kalpatharu villa-8.jpg",
+      "kalpatharu villa-9.jpg",
+    ]),
+  },
+  {
+    id: 5,
+    name: "Lavish Contemporary Villa",
+    type: "Contemporary Villa",
+    location: "Chennai, Tamil Nadu",
+    area: "9,000 sq ft",
+    duration: "7 months",
+    scope: "Contemporary villa interior with modern design philosophy, minimalist aesthetics, and smart home features",
+    description: "A contemporary masterpiece blending modern design with functional elegance and sophisticated living spaces.",
+    images: getResidentialImages("Lavish Contemporary Villa", [
+      "lavish contemporary villa- 1.jpg",
+      "lavish contemporary villa- 2.jpg",
+      "lavish contemporary villa-3.jpg",
+      "lavish contemporary villa- 4.jpg",
+    ]),
+  },
+  {
+    id: 6,
+    name: "Mandhralaya",
+    type: "Luxury Residence",
+    location: "Chennai, Tamil Nadu",
+    area: "7,800 sq ft",
+    duration: "6 months",
+    scope: "Luxury residence interior with traditional-modern fusion, custom elements, and premium finishes",
+    description: "An elegant residence combining traditional charm with modern luxury and sophisticated design elements.",
+    images: getResidentialImages("Mandhralaya", [
+      "mandhralaya-1.jpg",
+      "mandhralaya-2.jpg",
+      "mandhralaya-3.jpg",
+      "mandhralaya-4.jpg",
+      "mandhralaya-5.jpg",
+      "mandhralaya-6.jpg",
+    ]),
+  },
+  {
+    id: 7,
+    name: "The Crest Luxurious Villa",
+    type: "Ultra-Luxury Villa",
+    location: "Chennai, Tamil Nadu",
+    area: "15,000 sq ft",
+    duration: "12 months",
+    scope: "Ultra-luxury villa interior execution with bespoke design, high-end materials, and exclusive finishes",
+    description: "The pinnacle of luxury living with opulent interiors, grand spaces, and exceptional attention to detail.",
+    images: getResidentialImages("The Crest Luxurious Villa", [
+      "the crest, luxurious villa-1.jpg",
+      "the crest, luxurious villa-2.jpg",
+      "the crest, luxurious villa-3.jpg",
+      "the crest, luxurious villa-4.jpg",
+      "the crest, luxurious villa-5.jpg",
+      "the crest, luxurious villa-6.jpg",
+      "the crest, luxurious villa-7.jpg",
+    ]),
+  },
+];
+
 const sectors = ["All", "Corporate", "Industrial", "Hospitality", "Educational", "Retail"];
 
 export default function OurWorksPage() {
+  const [activeTab, setActiveTab] = useState<"corporate" | "residential">("corporate");
   const [selectedSector, setSelectedSector] = useState("All");
 
-  const filteredProjects =
+  // Check URL hash on mount and scroll
+  useEffect(() => {
+    if (window.location.hash === "#residential") {
+      setActiveTab("residential");
+      // Scroll to top of projects section after a brief delay
+      setTimeout(() => {
+        window.scrollTo({ top: 400, behavior: "smooth" });
+      }, 100);
+    }
+  }, []);
+
+  const filteredCommercialProjects =
     selectedSector === "All"
       ? commercialProjects
       : commercialProjects.filter((project) => project.sector === selectedSector);
@@ -221,112 +374,233 @@ export default function OurWorksPage() {
           </p>
         </motion.div>
 
-        {/* Sector Filter */}
+        {/* Tab Switcher */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex justify-center mb-12"
         >
-          {sectors.map((sector) => (
+          <div className="inline-flex rounded-full bg-gray-100 p-1 border border-gray-200">
             <button
-              key={sector}
-              onClick={() => setSelectedSector(sector)}
-              className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
-                selectedSector === sector
-                  ? "border-[#8ca77c] bg-[#8ca77c] text-white"
-                  : "border-gray-300 text-gray-700 hover:border-[#8ca77c] hover:text-[#8ca77c]"
+              onClick={() => setActiveTab("corporate")}
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeTab === "corporate"
+                  ? "bg-white text-gray-900 shadow-sm"
+                  : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              {sector}
+              Corporate
             </button>
-          ))}
+            <button
+              onClick={() => setActiveTab("residential")}
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeTab === "residential"
+                  ? "bg-white text-gray-900 shadow-sm"
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              Residential
+            </button>
+          </div>
         </motion.div>
+
+        {/* Sector Filter - Only for Corporate */}
+        {activeTab === "corporate" && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-wrap justify-center gap-3 mb-12"
+          >
+            {sectors.map((sector) => (
+              <button
+                key={sector}
+                onClick={() => setSelectedSector(sector)}
+                className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
+                  selectedSector === sector
+                    ? "border-[#8ca77c] bg-[#8ca77c] text-white"
+                    : "border-gray-300 text-gray-700 hover:border-[#8ca77c] hover:text-[#8ca77c]"
+                }`}
+              >
+                {sector}
+              </button>
+            ))}
+          </motion.div>
+        )}
       </section>
 
       {/* Projects Grid */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
+        <AnimatePresence mode="wait">
+          {activeTab === "corporate" ? (
             <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 group"
+              key="corporate"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8"
             >
-              {/* Image Carousel */}
-              <div className="relative h-64 overflow-hidden">
-                <ImageCarousel images={project.images} projectName={project.title} />
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-1 bg-white/95 backdrop-blur-sm text-xs font-medium text-gray-700 rounded-full">
-                    {project.sector}
-                  </span>
-                </div>
-              </div>
+              {filteredCommercialProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 group"
+                >
+                  {/* Image Carousel */}
+                  <div className="relative h-64 overflow-hidden">
+                    <ImageCarousel images={project.images} projectName={project.title} />
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="px-3 py-1 bg-white/95 backdrop-blur-sm text-xs font-medium text-gray-700 rounded-full">
+                        {project.sector}
+                      </span>
+                    </div>
+                  </div>
 
-              {/* Project Details */}
-              <div className="p-6">
-                <div className="mb-4">
-                  <h3 className="font-[var(--font-inter-tight)] text-xl font-bold text-gray-900 mb-1">
-                    {project.client}
-                  </h3>
-                  <p className="text-sm font-medium text-[#8ca77c] mb-3">{project.title}</p>
-                  <div className="flex items-center gap-2 text-xs text-gray-500 mb-3">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                    <span>{project.location}</span>
-                  </div>
-                </div>
+                  {/* Project Details */}
+                  <div className="p-6">
+                    <div className="mb-4">
+                      <h3 className="font-[var(--font-inter-tight)] text-xl font-bold text-gray-900 mb-1">
+                        {project.client}
+                      </h3>
+                      <p className="text-sm font-medium text-[#8ca77c] mb-3">{project.title}</p>
+                      <div className="flex items-center gap-2 text-xs text-gray-500 mb-3">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                          />
+                        </svg>
+                        <span>{project.location}</span>
+                      </div>
+                    </div>
 
-                {/* Key Metrics */}
-                <div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-gray-100">
-                  <div>
-                    <p className="text-xs font-medium text-gray-500 mb-1">Area</p>
-                    <p className="text-sm font-semibold text-gray-900">{project.area}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-gray-500 mb-1">Duration</p>
-                    <p className="text-sm font-semibold text-gray-900">{project.duration}</p>
-                  </div>
-                </div>
+                    {/* Key Metrics */}
+                    <div className="grid grid-cols-2 gap-4 mb-4 pb-4 border-b border-gray-100">
+                      <div>
+                        <p className="text-xs font-medium text-gray-500 mb-1">Area</p>
+                        <p className="text-sm font-semibold text-gray-900">{project.area}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-medium text-gray-500 mb-1">Duration</p>
+                        <p className="text-sm font-semibold text-gray-900">{project.duration}</p>
+                      </div>
+                    </div>
 
-                {/* Scope of Work */}
-                <div className="mb-4">
-                  <p className="text-xs font-medium text-gray-500 mb-2">Scope of Work</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">{project.scope}</p>
-                </div>
+                    {/* Scope of Work */}
+                    <div className="mb-4">
+                      <p className="text-xs font-medium text-gray-500 mb-2">Scope of Work</p>
+                      <p className="text-sm text-gray-700 leading-relaxed">{project.scope}</p>
+                    </div>
 
-                {/* Challenge & Solution */}
-                <div className="space-y-3">
-                  <div className="bg-gray-50 rounded-lg p-3">
-                    <p className="text-xs font-medium text-gray-500 mb-1">Challenge</p>
-                    <p className="text-sm text-gray-700">{project.challenge}</p>
+                    {/* Challenge & Solution */}
+                    {project.challenge && project.solution && (
+                      <div className="space-y-3">
+                        <div className="bg-gray-50 rounded-lg p-3">
+                          <p className="text-xs font-medium text-gray-500 mb-1">Challenge</p>
+                          <p className="text-sm text-gray-700">{project.challenge}</p>
+                        </div>
+                        <div className="bg-[#8ca77c]/5 rounded-lg p-3">
+                          <p className="text-xs font-medium text-[#8ca77c] mb-1">Our Solution</p>
+                          <p className="text-sm text-gray-700">{project.solution}</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                  <div className="bg-[#8ca77c]/5 rounded-lg p-3">
-                    <p className="text-xs font-medium text-[#8ca77c] mb-1">Our Solution</p>
-                    <p className="text-sm text-gray-700">{project.solution}</p>
-                  </div>
-                </div>
-              </div>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </div>
+          ) : (
+            <motion.div
+              key="residential"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10"
+            >
+              {residentialProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-500 group"
+                >
+                  {/* Image Carousel */}
+                  <div className="relative h-80 md:h-96 overflow-hidden">
+                    <ImageCarousel images={project.images} projectName={project.name} />
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="px-4 py-2 bg-white/95 backdrop-blur-sm text-sm font-semibold text-[#8ca77c] rounded-full shadow-md">
+                        {project.type}
+                      </span>
+                    </div>
+                  </div>
 
-        {filteredProjects.length === 0 && (
+                  {/* Project Details */}
+                  <div className="p-6 md:p-8">
+                    <div className="mb-6">
+                      <h3 className="font-[var(--font-inter-tight)] text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                        {project.name}
+                      </h3>
+                      <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                        <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                          />
+                        </svg>
+                        <span>{project.location}</span>
+                      </div>
+                      <p className="text-gray-700 leading-relaxed mb-6">{project.description}</p>
+                    </div>
+
+                    {/* Key Metrics */}
+                    <div className="grid grid-cols-2 gap-4 mb-6 pb-6 border-b border-gray-100">
+                      <div className="bg-gray-50 rounded-xl p-4">
+                        <p className="text-xs font-semibold text-gray-500 mb-1 uppercase tracking-wide">Area</p>
+                        <p className="text-lg font-bold text-gray-900">{project.area}</p>
+                      </div>
+                      <div className="bg-[#8ca77c]/5 rounded-xl p-4">
+                        <p className="text-xs font-semibold text-[#8ca77c] mb-1 uppercase tracking-wide">Duration</p>
+                        <p className="text-lg font-bold text-gray-900">{project.duration}</p>
+                      </div>
+                    </div>
+
+                    {/* Scope of Work */}
+                    <div>
+                      <p className="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wide">Scope of Work</p>
+                      <p className="text-sm text-gray-700 leading-relaxed">{project.scope}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {activeTab === "corporate" && filteredCommercialProjects.length === 0 && (
           <div className="text-center py-16">
             <p className="text-gray-500">No projects found in this category.</p>
           </div>
@@ -342,7 +616,10 @@ export default function OurWorksPage() {
           className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            { number: `${commercialProjects.length}+`, label: "Projects Completed" },
+            {
+              number: `${activeTab === "corporate" ? commercialProjects.length : residentialProjects.length}+`,
+              label: activeTab === "corporate" ? "Corporate Projects" : "Residential Projects",
+            },
             { number: "500+", label: "Total sq ft Delivered" },
             { number: "98%", label: "Client Satisfaction" },
             { number: "12", label: "Cities Served" },

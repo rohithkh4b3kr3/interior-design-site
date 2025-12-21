@@ -7,11 +7,9 @@ import Image from "next/image";
 
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "Construction Package", href: "/construction-package" },
-  { name: "Design Package", href: "/design-package" },
+  { name: "Packages", href: "/packages" },
   { name: "Our Works", href: "/our-works" },
   { name: "Interior", href: "/interior" },
-  { name: "Residential", href: "/residential" },
   { name: "Contact Us", href: "/contact-us" },
 ];
 
@@ -47,7 +45,13 @@ export default function Navbar() {
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        style={navStyle}
+        style={{
+          ...navStyle,
+          isolation: 'isolate',
+          willChange: 'transform',
+          clipPath: 'inset(0)',
+          WebkitClipPath: 'inset(0)',
+        }}
         className={`
           fixed top-4 md:top-6 left-1/2 z-50
           w-[calc(100%-2rem)] md:w-[calc(100%-3rem)]
