@@ -106,7 +106,7 @@ export default function HeroGSAP() {
                   if (finalValue.includes("+")) {
                     value.textContent = Math.round(this.targets()[0].value) + "+";
                   } else {
-                    value.textContent = Math.round(this.targets()[0].value);
+                    value.textContent = String(Math.round(this.targets()[0].value));
                   }
                 },
               }
