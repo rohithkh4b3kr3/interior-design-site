@@ -133,12 +133,14 @@ export default function HeroGSAP() {
   }, []);
 
   return (
-    <section ref={heroRef} className="relative bg-[#0f1115] text-white overflow-hidden">
+    <section ref={heroRef} className="relative bg-gradient-to-b from-[#0f1115] via-[#151821] to-[#0f1115] text-white overflow-hidden">
       {/* Animated background gradient */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#8ca77c] rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#8ca77c]/50 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
       </div>
+      {/* Subtle texture overlay */}
+      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,rgba(140,167,124,0.1),transparent_70%)]" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12 py-28 lg:py-36 grid lg:grid-cols-2 gap-16 items-center z-10">
         {/* LEFT CONTENT */}

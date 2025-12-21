@@ -14,8 +14,11 @@ const processSteps = [
 
 export default function ProcessSection() {
   return (
-    <section className="bg-white py-24 lg:py-32">
-      <div className="max-w-5xl mx-auto px-6 lg:px-12">
+    <section className="relative bg-gradient-to-b from-[#0f1115] via-[#151821] to-[#0f1115] text-white py-24 lg:py-32 overflow-hidden">
+      {/* Subtle texture overlay */}
+      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,rgba(140,167,124,0.1),transparent_70%)]" />
+      
+      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -26,10 +29,10 @@ export default function ProcessSection() {
           <p className="text-xs uppercase tracking-[0.2em] text-[#8ca77c] mb-6">
             Our Process
           </p>
-          <h2 className="font-[var(--font-inter-tight)] text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight mb-4 text-gray-900">
+          <h2 className="font-[var(--font-inter-tight)] text-3xl sm:text-4xl lg:text-5xl font-medium leading-tight mb-4 text-white">
             Structured Delivery Framework
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
             Ensuring predictability and accountability at every stage.
           </p>
         </motion.div>
@@ -50,14 +53,14 @@ export default function ProcessSection() {
               >
                 {/* Circle indicator */}
                 <div className="relative z-10 flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full bg-[#8ca77c] text-white flex items-center justify-center font-medium text-sm group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-full bg-[#8ca77c] text-white flex items-center justify-center font-medium text-sm group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-[#8ca77c]/20">
                     {index + 1}
                   </div>
                 </div>
                 
                 {/* Content */}
                 <div className="flex-1 pt-2">
-                  <p className="text-lg md:text-xl text-gray-900 font-[var(--font-inter-tight)] font-medium">
+                  <p className="text-lg md:text-xl text-white font-[var(--font-inter-tight)] font-medium">
                     {step}
                   </p>
                 </div>

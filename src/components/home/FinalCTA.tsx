@@ -5,7 +5,10 @@ import Link from "next/link";
 
 export default function FinalCTA() {
   return (
-    <section className="bg-[#0f1115] text-white py-24 lg:py-32">
+    <section className="relative bg-gradient-to-b from-[#0f1115] via-[#151821] to-[#0f1115] text-white py-24 lg:py-32 overflow-hidden">
+      {/* Subtle texture overlay */}
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_50%,rgba(140,167,124,0.2),transparent_70%)]" />
+      <div className="relative z-10">
       <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -68,6 +71,7 @@ export default function FinalCTA() {
             </div>
           </motion.div>
         </motion.div>
+      </div>
       </div>
     </section>
   );

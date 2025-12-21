@@ -15,8 +15,16 @@ const getProjectImages = (folderName: string, baseName: string, count: number, e
 };
 
 // Helper function to get all images from a residential project folder
-const getResidentialImages = (folderName: string, imageNames: string[]) => {
-  return imageNames.map(name => `/images/Residential/${folderName}/${name}`);
+const getResidentialImages = (folderName: string, imageNames: string[], nestedFolder?: string) => {
+  const basePath = nestedFolder 
+    ? `/images/Residential/${folderName}/${nestedFolder}`
+    : `/images/Residential/${folderName}`;
+  return imageNames.map(name => `${basePath}/${name}`);
+};
+
+// Helper function to get all images from a commercial project folder (supports webp)
+const getCommercialImages = (folderName: string, imageNames: string[]) => {
+  return imageNames.map(name => `/images/Commercial or Corporate Clients/${folderName}/${name}`);
 };
 
 // All commercial projects
@@ -195,6 +203,26 @@ const commercialProjects = [
     solution: "Balanced open-plan design with designated executive and meeting spaces",
     images: getProjectImages("metecno", "metecno", 4),
   },
+  {
+    id: 14,
+    client: "Rajan Dental",
+    title: "Dental Clinic",
+    sector: "Healthcare",
+    location: "Chennai, Tamil Nadu",
+    area: "2,500 sq ft",
+    duration: "3 months",
+    scope: "Complete dental clinic interior execution with treatment rooms, reception area, and sterilization zones",
+    challenge: "Creating a sterile, welcoming environment with efficient workflow",
+    solution: "Healthcare-grade finishes with patient-friendly design and optimized treatment room layouts",
+    images: getCommercialImages("Rajan Dental Clinic", [
+      "2025-11-21.webp",
+      "DSC05054-768x512.jpg.webp",
+      "DSC05157-scaled.webp",
+      "DSC05187-scaled.webp",
+      "DSC05264-scaled.webp",
+      "DSC05344-768x1152.jpg.webp",
+    ]),
+  },
 ];
 
 // All residential projects
@@ -331,9 +359,234 @@ const residentialProjects = [
       "the crest, luxurious villa-7.jpg",
     ]),
   },
+  {
+    id: 8,
+    name: "Adarsh Palm Retreat",
+    type: "Luxury Villa",
+    location: "Bellandur, Bangalore",
+    area: "9,500 sq ft",
+    duration: "8 months",
+    scope: "Complete luxury villa interior execution with modern design, premium finishes, and custom furniture",
+    description: "A contemporary villa featuring elegant design, spacious living areas, and sophisticated interiors.",
+    images: getResidentialImages(
+      "Adarsh Palm Retreat, Villa in Bellandur for Sumant and Neha - HCDDream",
+      [
+        "A_10294.jpg",
+        "A_10307.jpg",
+        "A_10324.jpg",
+        "A_10329.jpg",
+        "A_10331.jpg",
+        "A_10337.jpg",
+        "A_10365.jpg",
+        "A_10369.jpg",
+        "A_10371.jpg",
+        "A_10372.jpg",
+        "A_10380.jpg",
+        "A_10382.jpg",
+      ],
+      "Adarsh Palm Retreat, Villa in Bellandur for Sumant and Neha - HCDDream"
+    ),
+  },
+  {
+    id: 9,
+    name: "Brigade Cornerstone Utopia",
+    type: "Premium Apartment",
+    location: "Varthur, Bangalore",
+    area: "3,800 sq ft",
+    duration: "5 months",
+    scope: "Premium apartment interior with modern design elements, functional spaces, and luxury amenities",
+    description: "A beautifully designed apartment featuring contemporary aesthetics and thoughtful space planning.",
+    images: getResidentialImages(
+      "Brigade Cornerstone Utopia, Apartment in Varthur for Himanshu and Tanya - HCDDream",
+      [
+        "A_18798.jpg",
+        "A_18846.jpg",
+        "A_18985.jpg",
+        "A_18990.jpg",
+        "A_19112.jpg",
+        "A_19115.jpg",
+        "A_19133-1.jpg",
+        "Copy-of-3.jpg",
+        "Copy-of-final-5.jpg",
+      ],
+      "Brigade Cornerstone Utopia, Apartment in Varthur for Himanshu and Tanya - HCDDream"
+    ),
+  },
+  {
+    id: 10,
+    name: "Chaitanya Samarpan",
+    type: "Luxury Villa",
+    location: "Kadugodi, Bangalore",
+    area: "11,000 sq ft",
+    duration: "9 months",
+    scope: "Complete luxury villa interior execution with premium finishes, custom design elements, and high-end fixtures",
+    description: "An elegant villa showcasing sophisticated design with attention to detail and premium craftsmanship.",
+    images: getResidentialImages(
+      "Chaitanya Samarpan, Villa in Kadugodi for Sowmya and Ramesh - HCDDream",
+      [
+        "DSC_3804.jpg",
+        "DSC_3805.jpg",
+        "DSC_3811.jpg",
+        "DSC_3813-1.jpg",
+        "DSC_3813-scaled.jpg",
+        "DSC_3816.jpg",
+        "DSC_3820.jpg",
+        "DSC_3825.jpg",
+        "DSC_3839.jpg",
+        "DSC_3842.jpg",
+        "DSC_3845.jpg",
+        "DSC_3847.jpg",
+      ],
+      "Chaitanya Samarpan, Villa in Kadugodi for Sowmya and Ramesh - HCDDream"
+    ),
+  },
+  {
+    id: 11,
+    name: "Mantri",
+    type: "Premium Apartment",
+    location: "Hebbal, Bangalore",
+    area: "3,500 sq ft",
+    duration: "4.5 months",
+    scope: "Premium apartment interior with modern design, smart home integration, and luxury finishes",
+    description: "A modern apartment featuring clean lines, functional spaces, and contemporary design aesthetics.",
+    images: getResidentialImages(
+      "Mantri, Apartment in Hebbal for Sumanth and Surekha - HCDDream",
+      [
+        "1_DSC2315-scaled.jpg",
+        "1_DSC2316-scaled.jpg",
+        "DSC_0350-scaled.jpg",
+        "DSC_0355-scaled.jpg",
+        "DSC_0357-scaled.jpg",
+        "DSC_0369-scaled.jpg",
+        "DSC_0370-scaled.jpg",
+      ],
+      "Mantri, Apartment in Hebbal for Sumanth and Surekha - HCDDream"
+    ),
+  },
+  {
+    id: 12,
+    name: "Merlin Pristine",
+    type: "Premium Apartment",
+    location: "Kolkata, West Bengal",
+    area: "4,200 sq ft",
+    duration: "5 months",
+    scope: "Premium apartment interior execution with elegant design, premium materials, and sophisticated finishes",
+    description: "A luxurious apartment featuring refined interiors, spacious rooms, and elegant design throughout.",
+    images: getResidentialImages(
+      "Merlin Pristine, Apartment in Kolkata for Mausami and Samrat - HCDDream",
+      [
+        "TBS_002.jpg",
+        "TBS_004.jpg",
+        "TBS_005.jpg",
+        "TBS_006.jpg",
+        "TBS_007.jpg",
+        "TBS_008.jpg",
+        "TBS_008-1.jpg",
+        "TBS_010.jpg",
+        "TBS_013.jpg",
+        "TBS_018.jpg",
+      ],
+      "Merlin Pristine, Apartment in Kolkata for Mausami and Samrat - HCDDream"
+    ),
+  },
+  {
+    id: 13,
+    name: "Neeraja Serenity",
+    type: "Luxury Villa",
+    location: "HRBR, Bangalore",
+    area: "8,200 sq ft",
+    duration: "7 months",
+    scope: "Luxury villa interior with contemporary design, premium finishes, and custom furniture",
+    description: "A serene villa featuring modern luxury with elegant design and sophisticated living spaces.",
+    images: getResidentialImages(
+      "Neeraja Serenity, Villa in Bangalore - HRBR for Anjana and Mahesh - HCDDream",
+      [
+        "A_18583.jpg",
+        "A_18585.jpg",
+        "A_18592.jpg",
+        "A_18606.jpg",
+        "A_18607-scaled.jpg",
+      ],
+      "Neeraja Serenity, Villa in Bangalore - HRBR for Anjana and Mahesh - HCDDream"
+    ),
+  },
+  {
+    id: 14,
+    name: "Prestige Fern Residency",
+    type: "Premium Apartment",
+    location: "Sarjapur, Bangalore",
+    area: "3,600 sq ft",
+    duration: "4.5 months",
+    scope: "Premium apartment interior with modern design elements, functional spaces, and luxury amenities",
+    description: "A beautifully designed apartment featuring contemporary aesthetics and thoughtful space planning.",
+    images: getResidentialImages(
+      "Prestige Shantiniketan",
+      [
+        "A_16979-1-scaled.jpg",
+        "A_16981-scaled.jpg",
+        "A_16984-scaled.jpg",
+        "A_16985-scaled.jpg",
+        "A_16988-1-scaled.jpg",
+        "A_16989-1-scaled.jpg",
+        "A_16990-1-scaled.jpg",
+        "A_16991-1-scaled.jpg",
+        "A_16993-1-scaled.jpg",
+        "A_16996-1-scaled.jpg",
+      ],
+      "Prestige Fern Residency, Apartment in Sarjapur for Vipan and Divya - HCDDream"
+    ),
+  },
+  {
+    id: 15,
+    name: "Sobha Royal Pavillion",
+    type: "Premium Apartment",
+    location: "Sarjapur, Bangalore",
+    area: "4,000 sq ft",
+    duration: "5 months",
+    scope: "Premium apartment interior execution with elegant design, premium materials, and sophisticated finishes",
+    description: "A luxurious apartment featuring refined interiors, spacious rooms, and elegant design throughout.",
+    images: getResidentialImages(
+      "Sobha Royal Pavillion",
+      [
+        "A_10903.jpg",
+        "A_10956.jpg",
+        "A_10958.jpg",
+        "A_10960.jpg",
+        "A_10961.jpg",
+        "A_10966.jpg",
+        "A_10970.jpg",
+        "A_10981.jpg",
+      ],
+      "Sobha Royal Pavillion, Apartment in Sarjapur for Ashish and Komal - HCDDream"
+    ),
+  },
+  {
+    id: 16,
+    name: "Vaswani Exquisite",
+    type: "Premium Apartment",
+    location: "Whitefield, Bangalore",
+    area: "3,900 sq ft",
+    duration: "4.5 months",
+    scope: "Premium apartment interior with modern design, smart home features, and luxury finishes",
+    description: "A modern apartment featuring contemporary design with functional elegance and sophisticated living spaces.",
+    images: getResidentialImages(
+      "Vaswani Exquisite, Apartment in Whitefield for Nitin - HCDDream",
+      [
+        "DSC_2103.jpg",
+        "DSC_2106.jpg",
+        "DSC_2108.jpg",
+        "DSC_2109.jpg",
+        "DSC_2118-1.jpg",
+        "DSC_2119.jpg",
+        "DSC_2132.jpg",
+        "DSC_2136.jpg",
+      ],
+      "Vaswani Exquisite, Apartment in Whitefield for Nitin - HCDDream"
+    ),
+  },
 ];
 
-const sectors = ["All", "Corporate", "Industrial", "Hospitality", "Educational", "Retail"];
+const sectors = ["All", "Corporate", "Industrial", "Hospitality", "Educational", "Retail", "Healthcare"];
 
 export default function OurWorksPage() {
   const [activeTab, setActiveTab] = useState<"corporate" | "residential">("corporate");

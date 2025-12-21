@@ -53,8 +53,10 @@ const itemVariants = {
 
 export default function HowWeExecute() {
   return (
-    <section className="bg-[#0f1115] text-white py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section className="relative bg-gradient-to-b from-[#0f1115] via-[#151821] to-[#0f1115] text-white py-24 lg:py-32 overflow-hidden">
+      {/* Subtle texture overlay */}
+      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_50%,rgba(140,167,124,0.1),transparent_70%)]" />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -6,7 +6,7 @@ export default function MeasuringTape() {
   const marks = Array.from({ length: 101 }, (_, i) => i);
 
   return (
-    <div className="relative w-full h-12 md:h-14 overflow-hidden bg-[#0f1115]">
+    <div className="relative w-full h-12 md:h-14 overflow-hidden bg-gradient-to-b from-[#0f1115] via-[#151821] to-[#0f1115]">
       {/* Seamless moving scale */}
       <motion.div
         className="absolute inset-0 flex"
