@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import MeasuringTape from "@/components/home/MeasuringTape";
 // import CredibilityStrip from "@/components/home/CredibilityStrip";
 // import WhoWeAre from "@/components/home/WhoWeAre";
 import CredibilityAndCapabilities from "@/components/home/CredibilityAndCapabilities ";
@@ -16,6 +17,8 @@ export default function HomePage() {
     <main className="min-h-screen overflow-x-hidden">
       {/* 1. Hero - Authority */}
       <Hero />
+      {/* Measuring Tape Animation */}
+      <MeasuringTape />
       <CredibilityAndCapabilities />
       {/* 2. Credibility Strip - Trust */}
       {/* <CredibilityStrip /> */}
