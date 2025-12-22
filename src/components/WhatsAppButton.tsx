@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 export default function WhatsAppButton() {
-  const whatsappNumber = "918110000384"; // Replace with your WhatsApp number
+  const whatsappNumber = "8667625043"; // Replace with your WhatsApp number
   const whatsappMessage = "Hello! I'm interested in your services.";
 
   return (
