@@ -11,15 +11,15 @@ const heroImages = [
     alt: "Ashok Leyland Auditorium - Commercial Interior Project",
   },
   {
-    src: "/images/Commercial or Corporate Clients/HDB financial services/HDB financial services-1.jpg",
+    src: "/images/Commercial or Corporate Clients/ashok leyland patent gallery/ashok leyland patent gallery.jpg",
     alt: "HDB Financial Services - Corporate Office Interior",
   },
   {
-    src: "/images/Commercial or Corporate Clients/mahathi software private limited/mahathi software private limited-1.jpg",
+    src: "D:\WB2 drive\Freelance\Interior\public\images\Residential\Adarsh Palm Retreat, Villa in Bellandur for Sumant and Neha - HCDDream\Adarsh Palm Retreat, Villa in Bellandur for Sumant and Neha - HCDDream\A_10307.jpg,
     alt: "Mahathi Software - Modern Office Space",
   },
   {
-    src: "/images/Commercial or Corporate Clients/Yaskawa-India/Yaskawa-1.jpg",
+    src: "/images/Commercial or Corporate Clients/Commercial ashok leyland patent gallery-1.jpg",
     alt: "Yaskawa India - Industrial Office Design",
   },
 ];

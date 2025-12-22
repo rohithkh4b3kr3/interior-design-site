@@ -8,7 +8,7 @@ const constructionPackages = [
   {
     id: 1,
     name: "Basic Package",
-    price: "1999",
+    price: "2499",
     unit: "per sqft",
     badge: null,
     features: {
@@ -81,7 +81,7 @@ const constructionPackages = [
   {
     id: 2,
     name: "Standard Package",
-    price: "2199",
+    price: "2799",
     unit: "per sqft",
     badge: "Popular",
     features: {
@@ -159,7 +159,7 @@ const constructionPackages = [
   {
     id: 3,
     name: "Premium Package",
-    price: "2499",
+    price: "3099",
     unit: "per sqft",
     badge: "Best Value",
     features: {

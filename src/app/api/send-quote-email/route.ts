@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     // You can integrate with an email service provider here
     
     // Example email recipient (update with your actual email)
-    const recipientEmail = process.env.QUOTE_EMAIL || "hello@deejos.com";
+    const recipientEmail = process.env.QUOTE_EMAIL || "intechdesignersm@gmail.com";
 
     // For now, return success (you can implement actual email sending later)
     return NextResponse.json(

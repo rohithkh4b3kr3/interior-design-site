@@ -15,17 +15,31 @@ const heroImages = [
     src: "/images/Commercial or Corporate Clients/ashok leyland auditorium/ashok leyland-1.jpg",
     alt: "Ashok Leyland Auditorium - Commercial Interior Project",
   },
+
   {
-    src: "/images/Commercial or Corporate Clients/HDB financial services/HDB financial services-1.jpg",
-    alt: "HDB Financial Services - Corporate Office Interior",
+    src: "/images/Commercial or Corporate Clients/ashok leyland patent gallery/ashok leyland patent gallery-2.jpg",
+    alt: "Ashok Leyland Patent Gallery - Modern Display Systems",
+  },
+ 
+  {
+    src: "/images/Residential/Kalpatharu Villa/kalpatharu villa-1.jpg",
+    alt: "Kalpatharu Villa - Luxury Residential Interior",
   },
   {
-    src: "/images/Commercial or Corporate Clients/mahathi software private limited/mahathi software private limited-1.jpg",
-    alt: "Mahathi Software - Modern Office Space",
+    src: "/images/Residential/Avighna/avighna-1.jpg",
+    alt: "Avighna - Premium Villa Design",
   },
   {
-    src: "/images/Commercial or Corporate Clients/Yaskawa-India/Yaskawa-1.jpg",
-    alt: "Yaskawa India - Industrial Office Design",
+    src: "/images/Residential/Mandhralaya/mandhralaya-1.jpg",
+    alt: "Mandhralaya - Elegant Residential Interior",
+  },
+  {
+    src: "/images/Residential/The Crest Luxurious Villa/the crest, luxurious villa-1.jpg",
+    alt: "The Crest Luxurious Villa - Ultra-Luxury Residential Design",
+  },
+  {
+    src: "/images/Residential/Classy Bungalow/classy bungalow-1.jpg",
+    alt: "Classy Bungalow - Luxury Residential Design",
   },
 ];
 
@@ -218,6 +232,7 @@ export default function HeroGSAP() {
                 fill
                 className="object-cover"
                 priority={index === 0}
+                quality={95}
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>

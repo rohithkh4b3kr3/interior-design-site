@@ -12,7 +12,7 @@ const contactInfo = [
       </svg>
     ),
     title: "Address",
-    content: "No.1, 1st and 2nd Floor, CLC Works Road, Chromepet, Chennai - 600044",
+    content: "No.01 Dhanalakshmi nagar, Kilambakkam, Urappakam, Kanchipuram District, TamilNadu-603211",
   },
   {
     icon: (
@@ -21,8 +21,8 @@ const contactInfo = [
       </svg>
     ),
     title: "Phone",
-    content: "+91 811 0000 384",
-    link: "tel:+918110000384",
+    content: "+91 93822 04933",
+    link: "tel:+919382204933",
   },
   {
     icon: (
@@ -31,8 +31,8 @@ const contactInfo = [
       </svg>
     ),
     title: "Email",
-    content: "hello@deejos.com",
-    link: "mailto:hello@deejos.com",
+    content: "intechdesignersm@gmail.com",
+    link: "mailto:intechdesignersm@gmail.com",
   },
 ];
 
@@ -272,7 +272,7 @@ export default function ContactUsPage() {
               </p>
               <div className="flex gap-4">
                 <motion.a
-                  href="tel:+918110000384"
+                  href="tel:+919382204933"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                   className="flex-1 rounded-full bg-white text-[#8ca77c] py-3 text-center font-medium hover:bg-gray-100 transition-colors"
@@ -280,7 +280,7 @@ export default function ContactUsPage() {
                   Call Now
                 </motion.a>
                 <motion.a
-                  href="https://wa.me/918110000384"
+                  href="https://wa.me/919382204933"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}

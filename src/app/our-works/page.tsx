@@ -586,11 +586,8 @@ const residentialProjects = [
   },
 ];
 
-const sectors = ["All", "Corporate", "Industrial", "Hospitality", "Educational", "Retail", "Healthcare"];
-
 export default function OurWorksPage() {
   const [activeTab, setActiveTab] = useState<"corporate" | "residential">("corporate");
-  const [selectedSector, setSelectedSector] = useState("All");
 
   // Check URL hash on mount and scroll
   useEffect(() => {
@@ -603,10 +600,6 @@ export default function OurWorksPage() {
     }
   }, []);
 
-  const filteredCommercialProjects =
-    selectedSector === "All"
-      ? commercialProjects
-      : commercialProjects.filter((project) => project.sector === selectedSector);
 
   return (
     <main className="min-h-screen pt-32 pb-24 bg-white">
@@ -658,29 +651,6 @@ export default function OurWorksPage() {
           </div>
         </motion.div>
 
-        {/* Sector Filter - Only for Corporate */}
-        {activeTab === "corporate" && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="flex flex-wrap justify-center gap-3 mb-12"
-          >
-            {sectors.map((sector) => (
-              <button
-                key={sector}
-                onClick={() => setSelectedSector(sector)}
-                className={`px-4 py-2 rounded-full border text-sm font-medium transition-colors ${
-                  selectedSector === sector
-                    ? "border-[#8ca77c] bg-[#8ca77c] text-white"
-                    : "border-gray-300 text-gray-700 hover:border-[#8ca77c] hover:text-[#8ca77c]"
-                }`}
-              >
-                {sector}
-              </button>
-            ))}
-          </motion.div>
-        )}
       </section>
 
       {/* Projects Grid */}
@@ -695,7 +665,7 @@ export default function OurWorksPage() {
               transition={{ duration: 0.4 }}
               className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8"
             >
-              {filteredCommercialProjects.map((project, index) => (
+              {commercialProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -707,11 +677,6 @@ export default function OurWorksPage() {
                   {/* Image Carousel */}
                   <div className="relative h-64 overflow-hidden">
                     <ImageCarousel images={project.images} projectName={project.title} />
-                    <div className="absolute top-4 left-4 z-10">
-                      <span className="px-3 py-1 bg-white/95 backdrop-blur-sm text-xs font-medium text-gray-700 rounded-full">
-                        {project.sector}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Project Details */}
@@ -853,11 +818,6 @@ export default function OurWorksPage() {
           )}
         </AnimatePresence>
 
-        {activeTab === "corporate" && filteredCommercialProjects.length === 0 && (
-          <div className="text-center py-16">
-            <p className="text-gray-500">No projects found in this category.</p>
-          </div>
-        )}
       </section>
 
       {/* Stats Section */}

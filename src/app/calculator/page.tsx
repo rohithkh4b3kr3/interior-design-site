@@ -17,18 +17,28 @@ interface CalculatorRow {
 
 const floorOptions = ["G", "G+1", "G+2", "G+3", "G+4"];
 
-const packageOptions = [
-  { name: "Basic Package @ 1999/sqft", rate: 1999 },
-  { name: "Standard Package @ 2499/sqft", rate: 2499 },
-  { name: "Premium Package @ 2999/sqft", rate: 2999 },
+const constructionPackages = [
+  { name: "Basic Package @ 2499/sqft", rate: 2499 },
+  { name: "Standard Package @ 2799/sqft", rate: 2799 },
+  { name: "Premium Package @ 3099/sqft", rate: 3099 },
   { name: "Luxury Package @ 3499/sqft", rate: 3499 },
 ];
 
+const designPackages = [
+  { name: "Basic Package @ 45/sqft", rate: 45 },
+  { name: "Standard Package @ 95/sqft", rate: 95 },
+  { name: "Premium Package @ 180/sqft", rate: 180 },
+];
+
 export default function CalculatorPage() {
+  const [packageType, setPackageType] = useState<"construction" | "design">("construction");
   const [selectedFloors, setSelectedFloors] = useState("G+1");
-  const [selectedPackage, setSelectedPackage] = useState(packageOptions[0]);
+  const [selectedPackage, setSelectedPackage] = useState(constructionPackages[0]);
   const [rows, setRows] = useState<CalculatorRow[]>([]);
   const [totalCost, setTotalCost] = useState(0);
+
+  // Get current package options based on type
+  const currentPackageOptions = packageType === "construction" ? constructionPackages : designPackages;
 
   // Calculate cost for a single row
   const calculateRowCost = (row: CalculatorRow): number => {
@@ -44,7 +54,16 @@ export default function CalculatorPage() {
     return 0;
   };
 
-  // Initialize rows based on selected floors
+  // Update selected package when package type changes
+  useEffect(() => {
+    if (packageType === "construction") {
+      setSelectedPackage(constructionPackages[0]);
+    } else {
+      setSelectedPackage(designPackages[0]);
+    }
+  }, [packageType]);
+
+  // Initialize rows based on selected floors and package type
   useEffect(() => {
     setRows((prevRows) => {
       const newRows: CalculatorRow[] = [];
@@ -81,42 +100,45 @@ export default function CalculatorPage() {
         });
       }
 
-      // Add water sump
-      newRows.push({
-        id: "water-sump",
-        work: "Size of RCC Water Sump (A 4 member family will require 9000 liter capacity)",
-        area: existingAreas.get("water-sump") || "",
-        unit: "ltr",
-        rate: 24,
-        cost: 0,
-        inputType: "single",
-        placeholder1: "No. of Liters",
-      });
+      // Only add construction-specific items for construction packages
+      if (packageType === "construction") {
+        // Add water sump
+        newRows.push({
+          id: "water-sump",
+          work: "Size of RCC Water Sump (A 4 member family will require 9000 liter capacity)",
+          area: existingAreas.get("water-sump") || "",
+          unit: "ltr",
+          rate: 24,
+          cost: 0,
+          inputType: "single",
+          placeholder1: "No. of Liters",
+        });
 
-      // Add septic tank
-      newRows.push({
-        id: "septic-tank",
-        work: "Size of Septic Tank",
-        area: existingAreas.get("septic-tank") || "",
-        unit: "ltr",
-        rate: 24,
-        cost: 0,
-        inputType: "single",
-        placeholder1: "No. of Liters",
-      });
+        // Add septic tank
+        newRows.push({
+          id: "septic-tank",
+          work: "Size of Septic Tank",
+          area: existingAreas.get("septic-tank") || "",
+          unit: "ltr",
+          rate: 24,
+          cost: 0,
+          inputType: "single",
+          placeholder1: "No. of Liters",
+        });
 
-      // Add compound wall
-      newRows.push({
-        id: "compound-wall",
-        work: "Plain Compound Wall",
-        area: existingAreas.get("compound-wall") || "",
-        unit: "sqft",
-        rate: 425,
-        cost: 0,
-        inputType: "double",
-        placeholder1: "Length",
-        placeholder2: "Height",
-      });
+        // Add compound wall
+        newRows.push({
+          id: "compound-wall",
+          work: "Plain Compound Wall",
+          area: existingAreas.get("compound-wall") || "",
+          unit: "sqft",
+          rate: 425,
+          cost: 0,
+          inputType: "double",
+          placeholder1: "Length",
+          placeholder2: "Height",
+        });
+      }
 
       // Calculate costs for all rows
       return newRows.map((row) => ({
@@ -124,7 +146,7 @@ export default function CalculatorPage() {
         cost: calculateRowCost(row),
       }));
     });
-  }, [selectedFloors, selectedPackage]);
+  }, [selectedFloors, selectedPackage, packageType]);
 
   // Calculate total cost whenever rows change
   useEffect(() => {
@@ -175,10 +197,10 @@ export default function CalculatorPage() {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Construction Cost Calculator
+            Cost Calculator
           </h1>
           <p className="text-gray-400 text-lg">
-            Calculate your construction cost based on your requirements
+            Calculate your construction or design cost based on your requirements
           </p>
         </motion.div>
 
@@ -191,7 +213,22 @@ export default function CalculatorPage() {
         >
           {/* Header Section with Dropdowns */}
           <div className="bg-gradient-to-r from-[#8ca77c] to-[#7a9570] p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Package Type */}
+              <div>
+                <label className="block text-white font-semibold mb-2 text-sm">
+                  Package Type
+                </label>
+                <select
+                  value={packageType}
+                  onChange={(e) => setPackageType(e.target.value as "construction" | "design")}
+                  className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-white/50 transition"
+                >
+                  <option value="construction">Construction</option>
+                  <option value="design">Design</option>
+                </select>
+              </div>
+
               {/* No. of Floors */}
               <div>
                 <label className="block text-white font-semibold mb-2 text-sm">
@@ -218,12 +255,12 @@ export default function CalculatorPage() {
                 <select
                   value={selectedPackage.name}
                   onChange={(e) => {
-                    const pkg = packageOptions.find((p) => p.name === e.target.value);
+                    const pkg = currentPackageOptions.find((p) => p.name === e.target.value);
                     if (pkg) setSelectedPackage(pkg);
                   }}
                   className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 font-medium focus:outline-none focus:ring-2 focus:ring-white/50 transition"
                 >
-                  {packageOptions.map((pkg) => (
+                  {currentPackageOptions.map((pkg) => (
                     <option key={pkg.name} value={pkg.name}>
                       {pkg.name}
                     </option>
@@ -308,7 +345,9 @@ export default function CalculatorPage() {
             >
               <div className="flex justify-end">
                 <div className="text-right">
-                  <div className="text-sm text-gray-600 mb-1">Total Construction Cost</div>
+                  <div className="text-sm text-gray-600 mb-1">
+                    Total {packageType === "construction" ? "Construction" : "Design"} Cost
+                  </div>
                   <div className="text-3xl font-bold text-[#8ca77c]">
                     {formatCurrency(totalCost)}
                   </div>
