@@ -12,7 +12,7 @@ export default function WhatsAppButton() {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1, duration: 0.5 }}
-      className="fixed left-6 bottom-6 z-50"
+      className="fixed right-15 bottom-6 z-50"
     >
       <Link
         href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
