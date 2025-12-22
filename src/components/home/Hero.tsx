@@ -11,16 +11,28 @@ const heroImages = [
     alt: "Ashok Leyland Auditorium - Commercial Interior Project",
   },
   {
-    src: "/images/Commercial or Corporate Clients/ashok leyland patent gallery/ashok leyland patent gallery.jpg",
-    alt: "HDB Financial Services - Corporate Office Interior",
+    src: "/images/Commercial or Corporate Clients/ashok leyland patent gallery/ashok leyland patent gallery-2.jpg",
+    alt: "Ashok Leyland Patent Gallery - Modern Display Systems",
   },
   {
-    src: "D:\WB2 drive\Freelance\Interior\public\images\Residential\Adarsh Palm Retreat, Villa in Bellandur for Sumant and Neha - HCDDream\Adarsh Palm Retreat, Villa in Bellandur for Sumant and Neha - HCDDream\A_10307.jpg,
-    alt: "Mahathi Software - Modern Office Space",
+    src: "/images/Residential/Kalpatharu Villa/kalpatharu villa-1.jpg",
+    alt: "Kalpatharu Villa - Luxury Residential Interior",
   },
   {
-    src: "/images/Commercial or Corporate Clients/Commercial ashok leyland patent gallery-1.jpg",
-    alt: "Yaskawa India - Industrial Office Design",
+    src: "/images/Residential/Avighna/avighna-1.jpg",
+    alt: "Avighna - Premium Villa Design",
+  },
+  {
+    src: "/images/Residential/Mandhralaya/mandhralaya-1.jpg",
+    alt: "Mandhralaya - Elegant Residential Interior",
+  },
+  {
+    src: "/images/Residential/The Crest Luxurious Villa/the crest, luxurious villa-1.jpg",
+    alt: "The Crest Luxurious Villa - Ultra-Luxury Residential Design",
+  },
+  {
+    src: "/images/Residential/Classy Bungalow/classy bungalow-1.jpg",
+    alt: "Classy Bungalow - Luxury Residential Design",
   },
 ];
 
