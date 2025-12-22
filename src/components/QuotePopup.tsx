@@ -241,7 +241,7 @@ export default function QuotePopup() {
                 </div>
 
                 <p className="mt-6 text-lg font-semibold text-gray-800">
-                  TURNKEY CONSTRUCTION SERVICES
+                  INTECH CONSTRUCTION SERVICES
                 </p>
               </div>
             </div>
