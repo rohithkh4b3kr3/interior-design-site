@@ -2,6 +2,8 @@ import "./globals.css";
 import { inter, interTight } from "@/lib/fonts";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import QuotePopup from "@/components/QuotePopup";
 
 export const metadata = {
   title: "Intech Designers & Planners | Design + Build + Maintenance",
@@ -21,6 +23,8 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <WhatsAppButton />
+        <QuotePopup />
       </body>
     </html>
   );
