@@ -5,24 +5,24 @@ import Link from "next/link";
 
 const projectManagers = [
   {
-    name: "Mr. Nithish Kumaran S B",
-    role: "Senior Project Manager – Corporate & Institutional",
+    name: "Er. Gopinath S B",
+    role: "Senior Project Engineer – Corporate & Institutional",
     expertise: "Corporate interiors, hospitals, institutions, industrial facilities, civil coordination",
     phone: "+91 97106 27033",
     whatsapp: "https://wa.me/+919710627033",
     description: "Primary contact for corporate offices, hospitals, institutions, factories, and large-scale projects.",
   },
   {
-    name: "Mr. Kalaiselvan S",
-    role: "Project Manager – Civil Works & Construction",
+    name: "Er. Kalaiselvan S",
+    role: "Senior Project Engineer – Civil Works & Construction",
     expertise: "Civil works, RCC structures, villas, independent houses, budget-aligned execution",
     phone: "+91 63799 61771",
     whatsapp: "https://wa.me/+916379961771",
     description: "Primary contact for residential interiors and home construction projects.",
   },
   {
-    name: "Mr. Kamalanathan",
-    role: "Project Manager – Residential Interiors & Sports Projects",
+    name: "Er. Kamalanathan",
+    role: "Project Engineer – Residential Interiors & Sports Projects",
     expertise: "Residential interiors, villas, independent houses, sports courts, external development",
     phone: "+91 90802 06833",
     whatsapp: "https://wa.me/+919080206833",

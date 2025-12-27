@@ -100,14 +100,26 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/about-us" className="text-gray-400 hover:text-[#8ca77c] transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-[#8ca77c] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  <span>About Us</span>
+                </Link>
+              </li>
+               <li>
+                <Link href="/our-works" className="text-gray-400 hover:text-[#8ca77c] transition-colors flex items-center gap-2 group">
+                  <span className="w-1 h-1 rounded-full bg-[#8ca77c] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  <span>Why Intech</span>
+                </Link>
+              </li>
+               <li>
                 <Link href="/contact-us" className="text-gray-400 hover:text-[#8ca77c] transition-colors flex items-center gap-2 group">
                   <span className="w-1 h-1 rounded-full bg-[#8ca77c] opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   <span>Contact Us</span>
                 </Link>
               </li>
-              <li className="text-gray-400">About Us</li>
+              {/* <li className="text-gray-400">About Us</li>
               <li className="text-gray-400">Our Process</li>
-              <li className="text-gray-400">Why Intech</li>
+              <li className="text-gray-400">Why Intech</li> */}
             </ul>
           </motion.div>
 

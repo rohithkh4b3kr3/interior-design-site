@@ -35,7 +35,7 @@ const commercialProjects = [
     title: "Auditorium",
     sector: "Corporate",
     location: "Chennai, Tamil Nadu",
-    area: "15,000 sq ft",
+    area: "10,000 sq ft",
     duration: "6 months",
     scope: "Complete auditorium interior execution with advanced acoustics and modular seating systems",
     challenge: "Large-scale auditorium with acoustic and seating requirements",
@@ -209,7 +209,7 @@ const commercialProjects = [
     title: "Dental Clinic",
     sector: "Healthcare",
     location: "Chennai, Tamil Nadu",
-    area: "2,500 sq ft",
+    area: "7,500 sq ft",
     duration: "3 months",
     scope: "Complete dental clinic interior execution with treatment rooms, reception area, and sterilization zones",
     challenge: "Creating a sterile, welcoming environment with efficient workflow",
@@ -879,3 +879,4 @@ export default function OurWorksPage() {
     </main>
   );
 }
+   

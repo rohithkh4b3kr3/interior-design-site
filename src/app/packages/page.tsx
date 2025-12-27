@@ -233,7 +233,7 @@ const designPackages = [
   {
     id: 1,
     name: "Basic Design Package",
-    price: "25000",
+    price: "45",
     description: "Perfect for small homes and apartments",
     features: [
       "2D Layout Plans for All Floors",
@@ -254,7 +254,7 @@ const designPackages = [
   {
     id: 2,
     name: "Standard Design Package",
-    price: "50000",
+    price: "95",
     description: "Comprehensive design for residential projects",
     badge: "Most Popular",
     features: [
@@ -284,7 +284,7 @@ const designPackages = [
   {
     id: 3,
     name: "Premium Design Package",
-    price: "100000",
+    price: "180",
     description: "Complete design solution with premium support",
     badge: "Best Value",
     features: [
@@ -555,7 +555,7 @@ export default function PackagesPage() {
                     <p className="text-sm text-gray-600 mb-4">{pkg.description}</p>
                     <div className="flex items-baseline gap-2">
                       <span className="text-4xl font-bold">₹{pkg.price}</span>
-                      <span className="text-gray-500">one-time</span>
+                      <span className="text-gray-500">per Sq.ft</span>
                     </div>
                     <div className="mt-2 text-sm text-gray-500">
                       Timeline: {pkg.timeline}
