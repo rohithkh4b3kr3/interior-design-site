@@ -83,7 +83,7 @@ export default function AboutUsPage() {
               </p>
             </div>
             <p className="text-lg leading-relaxed">
-              Founded and led by <strong>Mr. S. Shankaran</strong>, Managing Director, Intech is built on
+              Founded and led by <strong>Er. S. Shankaran</strong>, Managing Director, Intech is built on
               more than three decades of hands-on experience across civil contracting, project management,
               real estate development, and interior execution. A graduate of the Government Technical
               Institute, Chennai, with formal training in Interior Design, he brings together engineering
