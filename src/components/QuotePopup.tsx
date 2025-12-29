@@ -1,14 +1,9 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
-interface FormData {
-  name: string;
-  mobile: string;
-  email: string;
-  city: string;
-}
+/* ================= DATA ================= */
 
 const cities = [
   "Chennai",
@@ -21,228 +16,154 @@ const cities = [
   "Pune",
 ];
 
+const heroImages = [
+  // "/images/Commercial or Corporate Clients/ashok leyland auditorium/ashok leyland-1.jpg",
+  // "/images/Commercial or Corporate Clients/ashok leyland patent gallery/ashok leyland patent gallery-2.jpg",
+  "/images/Residential/Kalpatharu Villa/kalpatharu villa-1.jpg",
+  // "/images/Residential/Classy Bungalow/classy bungalow-1.jpg",
+];
+
+/* ================= COMPONENT ================= */
+
 export default function QuotePopup() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState<FormData>({
+  const [open, setOpen] = useState(false);
+  const [bgIndex, setBgIndex] = useState(0);
+
+  const [form, setForm] = useState({
     name: "",
     mobile: "",
     email: "",
     city: "",
   });
 
-  // 🔹 Open popup on EVERY load
+  /* Open popup once */
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 800);
-
-    return () => clearTimeout(timer);
+    const t = setTimeout(() => setOpen(true), 700);
+    return () => clearTimeout(t);
   }, []);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch("/api/send-quote-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) throw new Error("Failed");
-
-      alert("Thank you! We'll get back to you soon.");
-      setIsOpen(false);
-      setFormData({ name: "", mobile: "", email: "", city: "" });
-    } catch (err) {
-      alert("Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  /* Rotate background */
+  useEffect(() => {
+    const i = setInterval(() => {
+      setBgIndex((p) => (p + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(i);
+  }, []);
 
   return (
     <AnimatePresence>
-      {isOpen && (
+      {open && (
         <>
-          {/* Backdrop */}
+          {/* ================= BACKDROP ================= */}
           <motion.div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100]"
+            className="fixed inset-0 bg-black/50 z-[100]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={handleClose}
+            onClick={() => setOpen(false)}
           />
 
-          {/* Modal */}
+          {/* ================= MODAL ================= */}
           <motion.div
             className="fixed inset-0 z-[101] flex items-center justify-center p-4"
-            initial={{ opacity: 0, scale: 0.92, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.92, y: 30 }}
-            transition={{ type: "spring", damping: 25, stiffness: 280 }}
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="
-                bg-white rounded-2xl shadow-2xl
-                max-w-5xl w-full
-                h-[92vh] md:h-auto
-                overflow-hidden
-                flex flex-col md:flex-row
-                relative
-              "
+              className="relative bg-white rounded-2xl shadow-2xl
+              max-w-4xl w-full overflow-hidden flex flex-col md:flex-row"
             >
-              {/* Close */}
+              {/* CLOSE BUTTON */}
               <button
-                onClick={handleClose}
-                className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full
-                bg-gray-100 hover:bg-gray-200 flex items-center justify-center"
+                onClick={() => setOpen(false)}
+                className="absolute top-4 right-4 z-20
+                w-9 h-9 rounded-full bg-white hover:bg-black/20"
               >
                 ✕
               </button>
 
-              {/* ================= LEFT — FORM ================= */}
-              <div className="flex-1 p-6 md:p-10 overflow-y-auto overscroll-contain">
-                {/* Header */}
-                <div className="bg-gradient-to-r from-[#8ca77c] to-[#7a9570]
-                -mx-6 md:-mx-10 -mt-6 md:-mt-10 mb-6 px-6 md:px-10 py-4">
-                  <h2 className="text-xl md:text-2xl font-bold text-white">
-                    Get Free Quote
-                  </h2>
-                </div>
+              {/* ================= LEFT: FORM ================= */}
+              <div className="flex-1 p-8">
+                <h2 className="text-2xl font-bold mb-6">Get Free Quote</h2>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Name */}
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1">
-                      Name *
-                    </label>
-                    <input
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3.5 md:py-3 rounded-lg border
-                      border-gray-300 focus:ring-2 focus:ring-[#8ca77c] outline-none"
-                      placeholder="Your name"
-                    />
-                  </div>
+                <form className="space-y-4">
+                  <input
+                    placeholder="Name"
+                    className="w-full border p-3 rounded-lg"
+                    value={form.name}
+                    onChange={(e) =>
+                      setForm({ ...form, name: e.target.value })
+                    }
+                  />
+                  <input
+                    placeholder="Mobile"
+                    className="w-full border p-3 rounded-lg"
+                    value={form.mobile}
+                    onChange={(e) =>
+                      setForm({ ...form, mobile: e.target.value })
+                    }
+                  />
+                  <input
+                    placeholder="Email"
+                    className="w-full border p-3 rounded-lg"
+                    value={form.email}
+                    onChange={(e) =>
+                      setForm({ ...form, email: e.target.value })
+                    }
+                  />
+                  <select
+                    className="w-full border p-3 rounded-lg"
+                    value={form.city}
+                    onChange={(e) =>
+                      setForm({ ...form, city: e.target.value })
+                    }
+                  >
+                    <option value="">Select City</option>
+                    {cities.map((c) => (
+                      <option key={c}>{c}</option>
+                    ))}
+                  </select>
 
-                  {/* Mobile */}
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1">
-                      Mobile Number *
-                    </label>
-                    <input
-                      name="mobile"
-                      type="tel"
-                      required
-                      value={formData.mobile}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3.5 md:py-3 rounded-lg border
-                      border-gray-300 focus:ring-2 focus:ring-[#8ca77c] outline-none"
-                      placeholder="Your mobile number"
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1">
-                      Email *
-                    </label>
-                    <input
-                      name="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3.5 md:py-3 rounded-lg border
-                      border-gray-300 focus:ring-2 focus:ring-[#8ca77c] outline-none"
-                      placeholder="Your email"
-                    />
-                  </div>
-
-                  {/* City */}
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1">
-                      City *
-                    </label>
-                    <select
-                      name="city"
-                      required
-                      value={formData.city}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3.5 md:py-3 rounded-lg border
-                      border-gray-300 focus:ring-2 focus:ring-[#8ca77c] outline-none bg-white"
-                    >
-                      <option value="">Select city</option>
-                      {cities.map((c) => (
-                        <option key={c} value={c}>
-                          {c}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Sticky CTA on Mobile */}
-                  <div className="sticky bottom-0 bg-white pt-4">
-                    <motion.button
-                      type="submit"
-                      disabled={isSubmitting}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.97 }}
-                      className="w-full bg-gradient-to-r from-[#8ca77c] to-[#7a9570]
-                      text-white font-semibold py-4 rounded-xl shadow-lg
-                      disabled:opacity-50"
-                    >
-                      {isSubmitting ? "Sending..." : "GET FREE QUOTE"}
-                    </motion.button>
-                  </div>
+                  <button
+                    type="button"
+                    className="w-full bg-[#8ca77c] text-white py-3 rounded-lg font-semibold"
+                  >
+                    GET FREE QUOTE
+                  </button>
                 </form>
               </div>
 
-              {/* ================= RIGHT — PROMO (DESKTOP ONLY) ================= */}
-              <div className="hidden md:flex flex-1 bg-gradient-to-br
-              from-gray-50 to-gray-100 p-10 flex-col justify-center relative">
-                <div className="absolute left-0 top-0 bottom-0 w-1
-                bg-gradient-to-b from-[#8ca77c] to-[#7a9570]" />
+              {/* ================= RIGHT: IMAGE ================= */}
+              <div className="hidden md:block md:w-1/2 relative">
+                <motion.div
+                  key={bgIndex}
+                  className="absolute inset-0"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8 }}
+                  style={{
+                    backgroundImage: `url(${encodeURI(
+                      heroImages[bgIndex]
+                    )})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                />
 
-                <h1 className="text-5xl font-bold text-gray-900 leading-tight mb-6">
-                  HOME
-                  <br />
-                  CONSTRUCTION
-                  <br />
-                  <span className="font-extrabold">EXPERTS</span>
-                  <br />
-                  IN
-                  <br />
-                  <span className="text-[#8ca77c]">CHENNAI</span>
-                </h1>
+                <div className="absolute inset-0 bg-black/50" />
 
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br
-                from-[#8ca77c] to-[#7a9570] flex flex-col items-center
-                justify-center text-white shadow-lg">
-                  <div className="text-xs font-bold">CELEBRATING</div>
-                  <div className="text-4xl font-bold">30+</div>
-                  <div className="text-xs font-bold">YEARS</div>
+                <div className="relative z-10 p-8 text-white flex items-center h-full">
+                  <h1 className="text-5xl font-bold leading-tight">
+                    HOME
+                    <br />
+                    CONSTRUCTION
+                    <br />
+                    <span className="text-[#8ca77c]">EXPERTS</span>
+                  </h1>
                 </div>
-
-                <p className="mt-6 text-lg font-semibold text-gray-800">
-                  INTECH CONSTRUCTION SERVICES
-                </p>
               </div>
             </div>
           </motion.div>

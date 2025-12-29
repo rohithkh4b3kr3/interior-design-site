@@ -1,14 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     unoptimized: false,
-    remotePatterns: [],
+    qualities: [75, 90, 95],
+    formats: ["image/webp", "image/avif"],
   },
-  // Ensure src directory is recognized
+
   experimental: {
-    optimizePackageImports: ['framer-motion'],
+    optimizePackageImports: ["framer-motion"],
   },
 };
 
